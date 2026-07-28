@@ -296,3 +296,57 @@ body.is-revealed .hero-anim-btn {
   transform: translateY(0);
 }
 
+/* DYNAMIC VIEWPORT HEIGHT (100dvh) FOR SAFARI & CHROME ADDRESS BAR FIT */
+.hero-section {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* OPTIMIZED LAYOUT FIT FOR SMALL PHONES WITH SAFARI BOTTOM ADDRESS BAR OPEN (< 720px HEIGHT) */
+@media (max-height: 720px) and (max-width: 640px) {
+  .hero-section {
+    padding-top: 2.25rem !important;
+    padding-bottom: 2.25rem !important;
+  }
+
+  .hero-container {
+    gap: 0.65rem !important;
+  }
+
+  .hero-ganesha-wrapper {
+    width: 5rem !important; /* 80px */
+    height: 5rem !important;
+  }
+
+  .hero-title-main {
+    font-size: 3rem !important; /* 48px crisp & bold */
+    line-height: 1.05 !important;
+  }
+
+  .hero-title-weds {
+    font-size: 1.85rem !important;
+    margin-top: 0.15rem !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  .hero-subtext {
+    font-size: 0.95rem !important;
+  }
+
+  .hero-badge {
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  .hero-btn {
+    padding-top: 0.65rem !important;
+    padding-bottom: 0.65rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    font-size: 0.72rem !important;
+  }
+}
+

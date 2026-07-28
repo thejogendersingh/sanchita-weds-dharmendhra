@@ -98,15 +98,15 @@
     <i data-lucide="volume-2" class="w-5 h-5 text-royal-gold"></i>
   </button>
 
-  <!-- HERO SECTION - RICH UN-SQUISHED FULL-SIZE READABLE TEXT -->
-  <section class="relative min-h-screen flex flex-col items-center justify-center pt-16 pb-16 px-4 sm:px-8 overflow-hidden bg-ivory-100">
+  <!-- HERO SECTION - OPTION 1 (100dvh) + OPTION 3 (SAFARI LOW HEIGHT MEDIA QUERY FIT) -->
+  <section class="hero-section relative flex flex-col items-center justify-center pt-16 pb-16 px-4 sm:px-8 overflow-hidden bg-ivory-100">
     <!-- Background Floral Image - 100% Full Bleed Edge-to-Edge -->
     <div class="absolute inset-0 z-0 pointer-events-none opacity-100 overflow-hidden">
       <img src="assets/hero_bg.jpg" alt="Palace Archway Background" class="w-full h-full object-cover filter brightness-105 contrast-105" />
     </div>
 
     <!-- Main Cohesive Column Content -->
-    <div class="flex flex-col items-center text-center max-w-4xl mx-auto z-10 my-auto space-y-4 sm:space-y-6">
+    <div class="hero-container flex flex-col items-center text-center max-w-4xl mx-auto z-10 my-auto space-y-4 sm:space-y-6">
       
       <!-- Top Mantra & Ganesha Medallion -->
       <div class="flex flex-col items-center gap-3">
@@ -116,35 +116,35 @@
         </div>
 
         <!-- Lord Ganesha Avatar Medallion -->
-        <div class="relative w-24 h-24 sm:w-36 sm:h-36 rounded-full p-1.5 bg-gradient-to-tr from-royal-gold via-amber-300 to-royal-gold shadow-glow hero-anim-ganesha">
+        <div class="hero-ganesha-wrapper relative w-24 h-24 sm:w-36 sm:h-36 rounded-full p-1.5 bg-gradient-to-tr from-royal-gold via-amber-300 to-royal-gold shadow-glow hero-anim-ganesha">
           <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-ivory-100 bg-[#E3E8E5] flex items-center justify-center">
             <img src="assets/ganesha_avatar.jpg" alt="Lord Ganesha" class="w-full h-full object-cover scale-125 filter brightness-105 contrast-105" />
           </div>
         </div>
       </div>
 
-      <!-- Main Editorial Text & Couple Names (Aarav / weds / Ananya) - NORMAL LARGE READABLE SIZES -->
+      <!-- Main Editorial Text & Couple Names (Aarav / weds / Ananya) -->
       <div class="space-y-2 sm:space-y-4 pt-1">
-        <p class="font-serif italic text-xl sm:text-3xl md:text-4xl text-royal-gold font-medium tracking-wide hero-anim-sub">
+        <p class="hero-subtext font-serif italic text-xl sm:text-3xl md:text-4xl text-royal-gold font-medium tracking-wide hero-anim-sub">
           Invite You To Celebrate The Royal Matrimony Of
         </p>
 
         <!-- 3 Distinct Lines: Line 1: Aarav, Line 2: weds, Line 3: Ananya -->
         <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-light text-royal-green tracking-tight leading-tight drop-shadow-md hero-anim-title flex flex-col items-center justify-center">
-          <span class="font-normal text-royal-green">Aarav</span>
-          <span class="font-cursive text-royal-gold text-3xl sm:text-5xl md:text-6xl font-normal py-0.5 my-1">weds</span>
-          <span class="font-normal text-royal-green">Ananya</span>
+          <span class="hero-title-main font-normal text-royal-green">Aarav</span>
+          <span class="hero-title-weds font-cursive text-royal-gold text-3xl sm:text-5xl md:text-6xl font-normal py-0.5 my-1">weds</span>
+          <span class="hero-title-main font-normal text-royal-green">Ananya</span>
         </h1>
       </div>
 
       <!-- Date & Venue 2 Separate Distinct Badges -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 pt-1 hero-anim-badges">
-        <span class="flex items-center gap-2 bg-ivory-100/95 backdrop-blur-md px-5 py-2.5 rounded-full border border-royal-gold/40 shadow-card text-xs sm:text-base font-sans text-royal-green font-semibold uppercase tracking-wider">
+        <span class="hero-badge flex items-center gap-2 bg-ivory-100/95 backdrop-blur-md px-5 py-2.5 rounded-full border border-royal-gold/40 shadow-card text-xs sm:text-base font-sans text-royal-green font-semibold uppercase tracking-wider">
           <i data-lucide="calendar" class="w-4 h-4 text-royal-gold"></i>
           28th November 2026
         </span>
         <span class="hidden sm:inline text-royal-gold font-serif text-xl">•</span>
-        <span class="flex items-center gap-2 bg-ivory-100/95 backdrop-blur-md px-5 py-2.5 rounded-full border border-royal-gold/40 shadow-card text-xs sm:text-base font-sans text-royal-green font-semibold uppercase tracking-wider">
+        <span class="hero-badge flex items-center gap-2 bg-ivory-100/95 backdrop-blur-md px-5 py-2.5 rounded-full border border-royal-gold/40 shadow-card text-xs sm:text-base font-sans text-royal-green font-semibold uppercase tracking-wider">
           <i data-lucide="map-pin" class="w-4 h-4 text-royal-gold"></i>
           The Oberoi Udaivilas, Udaipur
         </span>
@@ -152,7 +152,7 @@
 
       <!-- CTA Button -->
       <div class="pt-2 hero-anim-btn">
-        <button onclick="scrollToId('countdown-section')" class="px-9 py-4 bg-royal-green text-ivory-100 font-sans text-xs sm:text-sm uppercase tracking-[0.25em] font-semibold rounded-full shadow-luxury border-2 border-royal-gold hover:scale-105 transition-all inline-block">
+        <button onclick="scrollToId('countdown-section')" class="hero-btn px-9 py-4 bg-royal-green text-ivory-100 font-sans text-xs sm:text-sm uppercase tracking-[0.25em] font-semibold rounded-full shadow-luxury border-2 border-royal-gold hover:scale-105 transition-all inline-block">
           Open Royal Invitation
         </button>
       </div>
