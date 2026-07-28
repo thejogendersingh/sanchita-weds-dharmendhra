@@ -103,9 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       
-      const fontSize = Math.min(Math.max(w / 28, 13), 16);
-      ctx.font = `600 ${fontSize}px "Cormorant Garamond", serif`;
-      ctx.fillText('✦  SCRATCH TO REVEAL  ✦', w / 2, h / 2);
+      const fontSize = Math.min(Math.max(w / 24, 14), 18);
+      ctx.font = `bold ${fontSize}px "Plus Jakarta Sans", "Cormorant Garamond", serif`;
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
+      ctx.shadowBlur = 4;
+      ctx.fillText('✦ SCRATCH TO REVEAL ✦', w / 2, h / 2);
+      ctx.shadowColor = 'transparent';
     }
 
     function getScratchPos(e) {
