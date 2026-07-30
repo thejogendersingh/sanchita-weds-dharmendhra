@@ -98,16 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.lineWidth = 2;
       ctx.strokeRect(10, 10, w - 20, h - 20);
 
-      // ✦ SCRATCH TO REVEAL ✦ Crisp Soft White Text
+      // ✦ Scratch to Reveal ✦ Easy to Read Elegant Italic Serif
       ctx.fillStyle = '#FFFFFF';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       
-      const fontSize = Math.min(Math.max(w / 24, 14), 18);
-      ctx.font = `bold ${fontSize}px "Plus Jakarta Sans", "Cormorant Garamond", serif`;
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
-      ctx.shadowBlur = 4;
-      ctx.fillText('✦ SCRATCH TO REVEAL ✦', w / 2, h / 2);
+      const fontSize = Math.min(Math.max(w / 22, 16), 22);
+      ctx.font = `italic 500 ${fontSize}px "Cormorant Garamond", serif`;
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+      ctx.shadowBlur = 3;
+      ctx.fillText('✦   Scratch to Reveal   ✦', w / 2, h / 2);
       ctx.shadowColor = 'transparent';
     }
 
@@ -211,6 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listeners for Touch & Mouse
     window.addEventListener('resize', resizeScratchCanvas);
     setTimeout(resizeScratchCanvas, 100);
+    if (document.fonts) {
+      document.fonts.ready.then(resizeScratchCanvas);
+    }
 
     scratchCanvas.addEventListener('mousedown', (e) => { isScratching = true; scratch(e); });
     scratchCanvas.addEventListener('mousemove', scratch);
