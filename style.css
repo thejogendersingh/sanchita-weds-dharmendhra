@@ -328,51 +328,47 @@ body.is-revealed .hero-anim-btn {
   overflow: hidden;
 }
 
-/* OPTIMIZED LAYOUT FIT FOR SMALL PHONES WITH SAFARI BOTTOM ADDRESS BAR OPEN (< 720px HEIGHT) */
-@media (max-height: 720px) and (max-width: 640px) {
+/* OPTIMIZED LAYOUT FIT FOR ALL MOBILE PHONES (IPHONE 13/14/SE & ANDROID) */
+@media (max-width: 640px) {
   .hero-section {
-    padding-top: 1.5rem !important;
-    padding-bottom: 3.5rem !important; /* Larger bottom padding pushes centered content upward */
+    padding-top: max(1.25rem, env(safe-area-inset-top)) !important;
+    padding-bottom: 2rem !important;
+    justify-content: flex-start !important;
   }
 
   .hero-container {
-    gap: 0.65rem !important;
-  }
-
-  .hero-ganesha-wrapper {
-    width: 5rem !important; /* 80px */
-    height: 5rem !important;
+    transform: translateY(0) !important;
+    margin-top: 0.5rem !important;
   }
 
   .hero-title-main {
-    font-size: 3.85rem !important; /* Enlarged names on mobile viewports */
+    font-size: 2.75rem !important;
     line-height: 1.05 !important;
   }
 
   .hero-title-weds {
-    font-size: 2.35rem !important; /* Enlarged weds text */
-    margin-top: 0.15rem !important;
-    margin-bottom: 0.15rem !important;
+    font-size: 2rem !important;
+    margin-top: -0.2rem !important;
+    margin-bottom: -0.2rem !important;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 640px) {
+  .hero-section {
+    padding-top: max(1rem, env(safe-area-inset-top)) !important;
+    padding-bottom: 1.5rem !important;
   }
 
-  .hero-subtext {
-    font-size: 0.95rem !important;
+  .hero-container {
+    margin-top: 0.25rem !important;
   }
 
-  .hero-badge {
-    padding-top: 0.4rem !important;
-    padding-bottom: 0.4rem !important;
-    padding-left: 0.85rem !important;
-    padding-right: 0.85rem !important;
-    font-size: 0.72rem !important;
+  .hero-title-main {
+    font-size: 2.5rem !important;
   }
 
-  .hero-btn {
-    padding-top: 0.65rem !important;
-    padding-bottom: 0.65rem !important;
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-    font-size: 0.72rem !important;
+  .hero-title-weds {
+    font-size: 1.85rem !important;
   }
 }
 
