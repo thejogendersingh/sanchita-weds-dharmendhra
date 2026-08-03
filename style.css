@@ -1,9 +1,9 @@
 /* Modern Indian Luxury Styles - Ultra Slow & Smooth Cinematic Motion */
 
 :root {
-  --royal-green: #1C352D;
+  --royal-green: #8A3E4E;
   --royal-gold: #C5A059;
-  --ivory-bg: #FAF8F5;
+  --ivory-bg: #FFFFFF;
 }
 
 html {
@@ -13,178 +13,169 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 3D DOUBLE DOOR OVERLAY - TRANSPARENT BACKDROP PREVENTS DARK BLINKING */
+/* ENVELOPE ENTRANCE OVERLAY SYSTEM */
 .door-overlay {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  perspective: 1600px;
-  background-color: transparent; /* Eliminates dark flash entirely */
+  background-color: #FFF5F6;
   overflow: hidden;
   user-select: none;
-}
-
-.door-panel {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  z-index: 20;
-  overflow: hidden;
-  transition: transform 5.5s cubic-bezier(0.2, 1, 0.3, 1), opacity 4.5s cubic-bezier(0.2, 1, 0.3, 1);
-  will-change: transform, opacity;
-  transform-style: preserve-3d;
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
-}
-
-.left-door {
-  left: 0;
-  transform-origin: left center;
-  border-right: 2px solid rgba(197, 160, 89, 0.8);
-}
-
-.right-door {
-  right: 0;
-  transform-origin: right center;
-  border-left: 2px solid rgba(197, 160, 89, 0.8);
-}
-
-.door-img-wrapper {
-  position: relative;
-  width: 200%;
-  height: 100%;
-}
-
-.right-img-wrapper {
-  left: -100%;
-}
-
-.door-img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  filter: brightness(0.96) contrast(1.04);
-}
-
-/* ULTRA SLOW & CINEMATIC 3D DOOR OPENING */
-.door-overlay.is-opened .left-door {
-  transform: rotateY(-110deg) translateX(-100%);
-  opacity: 0;
-}
-
-.door-overlay.is-opened .right-door {
-  transform: rotateY(110deg) translateX(100%);
-  opacity: 0;
-}
-
-.door-overlay.is-opened .door-top-header,
-.door-overlay.is-opened .door-center-seal {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.6);
-  pointer-events: none;
-  transition: all 2.2s cubic-bezier(0.2, 1, 0.3, 1);
-}
-
-/* TOP HEADER MANTRA - SLEEK COMPACT TRADITIONAL BADGE */
-.door-top-header {
-  position: absolute;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 30;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.mantra-badge {
-  padding: 6px 18px;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, rgba(140, 38, 62, 0.94) 0%, rgba(92, 24, 40, 0.96) 100%);
-  border: 1.5px solid #C5A059;
-  color: #F4EAD4;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 12px rgba(197, 160, 89, 0.35);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-/* MIDDLE CENTER SEAL - TRADITIONAL FLORAL LEAF RING MEDALLION */
-.door-center-seal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 30;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
 }
 
-.seal-circle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #8C263E 0%, #5C1828 70%, #1C352D 100%);
-  border: 3px solid #C5A059;
-  box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.25), 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(197, 160, 89, 0.6);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  animation: pulseGlow 3.2s infinite ease-in-out;
-  padding: 4px;
-  position: relative;
-  overflow: hidden;
+.door-overlay.is-opened {
+  animation: fadeOverlayOut 2.2s cubic-bezier(0.25, 1, 0.3, 1) forwards;
+  pointer-events: none;
 }
 
-.seal-flourish-top {
-  font-size: 8px;
-  color: #C5A059;
-  line-height: 1;
-  margin-bottom: 0px;
+.door-overlay.is-opened .envelope-wrapper {
+  animation: zoomEnvelopeOpen 2.2s cubic-bezier(0.25, 1, 0.3, 1) forwards !important;
 }
 
-.seal-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  font-size: 24px;
-  color: #F4EAD4;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-  margin: 1px 0;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+.door-overlay.is-opened .envelope-text-top {
+  animation: fadeTextOutTop 0.8s cubic-bezier(0.25, 1, 0.3, 1) forwards !important;
 }
 
-.seal-flourish-bottom {
-  font-size: 8px;
-  color: #C5A059;
-  line-height: 1;
-  margin-top: 0px;
-  margin-bottom: 1px;
+.door-overlay.is-opened .envelope-text-bottom {
+  animation: fadeTextOutBottom 0.8s cubic-bezier(0.25, 1, 0.3, 1) forwards !important;
 }
 
-.seal-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #C5A059;
-  font-weight: 700;
-  white-space: nowrap;
+@keyframes fadeOverlayOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(197, 160, 89, 0.4); }
-  50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(197, 160, 89, 0.85); }
+@keyframes zoomEnvelopeOpen {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5) rotate(3deg); /* Envelope corners touch screen edges */
+    opacity: 0; /* Gradually fades to transparent */
+  }
+}
+
+@keyframes fadeTextOutTop {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+
+@keyframes fadeTextOutBottom {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+/* Staggered on-load transitions using Pure CSS keyframes */
+.envelope-text-top {
+  opacity: 0;
+  animation: fadeInDown 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+.envelope-wrapper {
+  opacity: 0;
+  animation: zoomInFloat 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards, floatEnvelope 6s ease-in-out infinite alternate 1.0s;
+}
+
+.envelope-wrapper:active {
+  transform: scale(0.96) !important;
+  transition: transform 0.15s ease;
+}
+
+.envelope-text-bottom {
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomInFloat {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Floating animation for envelope */
+@keyframes floatEnvelope {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes pingSlow {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: pingSlow 2.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.drop-shadow-3xl {
+  filter: drop-shadow(0 25px 35px rgba(138, 62, 78, 0.25)) drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
 }
 
 /* HERO REVEAL MICRO-ANIMATIONS */
@@ -246,6 +237,32 @@ body.is-revealed .hero-anim-btn {
   transition-delay: 1.3s;
 }
 
+.hero-title-main {
+  text-shadow: 0 1px 2px rgba(28, 53, 45, 0.05);
+}
+
+.hero-title-weds {
+  text-shadow: 0 1px 4px rgba(197, 160, 89, 0.25);
+}
+
+.royal-gold-frame {
+  position: relative;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #C5A059 0%, #FAF0D7 30%, #C5A059 70%, #E6C685 100%);
+  box-shadow: 0 12px 28px -6px rgba(28, 53, 45, 0.15), 0 0 20px rgba(197, 160, 89, 0.35);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.royal-gold-frame::after {
+  content: '';
+  position: absolute;
+  inset: 2.5px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
 /* CUSTOM CURSOR */
 .custom-cursor-dot {
   position: fixed;
@@ -296,17 +313,35 @@ body.is-revealed .hero-anim-btn {
   transform: translateY(0);
 }
 
+/* LANG DROPDOWN SLIDE ANIMATION */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* DYNAMIC VIEWPORT HEIGHT (100dvh) FOR SAFARI & CHROME ADDRESS BAR FIT */
 .hero-section {
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
 }
 
 /* OPTIMIZED LAYOUT FIT FOR SMALL PHONES WITH SAFARI BOTTOM ADDRESS BAR OPEN (< 720px HEIGHT) */
 @media (max-height: 720px) and (max-width: 640px) {
   .hero-section {
-    padding-top: 2.25rem !important;
-    padding-bottom: 2.25rem !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 3.5rem !important; /* Larger bottom padding pushes centered content upward */
   }
 
   .hero-container {
@@ -319,12 +354,12 @@ body.is-revealed .hero-anim-btn {
   }
 
   .hero-title-main {
-    font-size: 3rem !important; /* 48px crisp & bold */
+    font-size: 3.85rem !important; /* Enlarged names on mobile viewports */
     line-height: 1.05 !important;
   }
 
   .hero-title-weds {
-    font-size: 1.85rem !important;
+    font-size: 2.35rem !important; /* Enlarged weds text */
     margin-top: 0.15rem !important;
     margin-bottom: 0.15rem !important;
   }

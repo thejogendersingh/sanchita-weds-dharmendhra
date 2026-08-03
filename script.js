@@ -5,24 +5,31 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) {
     lucide.createIcons();
   }
-
-  // 1. 3D DOUBLE DOOR SPLIT OPENING (CINEMATIC 2.8s SLOW SWING) & MUSIC START
+  // 1. ENVELOPE OPENING & ENTRY ANIMATION
   const doorOverlay = document.getElementById('door-overlay');
   const doorSealBtn = document.getElementById('door-seal-btn');
+
+  // Trigger staggered animations on load are handled by CSS animations now.
 
   function openRoyalDoor() {
     if (!doorOverlay || doorOverlay.classList.contains('is-opened')) return;
     
-    // Trigger door opening state
+    // Trigger opening transition
     doorOverlay.classList.add('is-opened');
 
     // Trigger hero content micro-motion reveal
     document.body.classList.add('is-revealed');
 
-    // Hide door overlay after smooth 5.5s transition completes
+    // Ensure background video plays (bypasses potential mobile restrictions on pre-interaction autoplay)
+    const heroVideo = document.querySelector('.hero-bg-video');
+    if (heroVideo) {
+      heroVideo.play().catch(err => console.log('Video play error:', err));
+    }
+
+    // Hide door overlay after smooth 2.0s transition completes
     setTimeout(() => {
       doorOverlay.style.display = 'none';
-    }, 5500);
+    }, 2000);
 
     // Start Indian Classical Ambient Raga Music
     startIndianRagaMusic();
@@ -83,31 +90,32 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.globalCompositeOperation = 'source-over';
       ctx.clearRect(0, 0, w, h);
 
-      // Warm Metallic Gold-Champagne Card Fill
+      // Iridescent Rose-Gold Diagonal Metallic Foil Gradient (Dynamic Tactile Feel)
       const cardGrad = ctx.createLinearGradient(0, 0, w, h);
-      cardGrad.addColorStop(0, '#D9B26D');
-      cardGrad.addColorStop(0.3, '#F3D69A');
-      cardGrad.addColorStop(0.7, '#C89F57');
-      cardGrad.addColorStop(1, '#E6C685');
+      cardGrad.addColorStop(0, '#F5D6C6');
+      cardGrad.addColorStop(0.22, '#FFF0E5');
+      cardGrad.addColorStop(0.48, '#E2B39E');
+      cardGrad.addColorStop(0.74, '#FFF9F6');
+      cardGrad.addColorStop(1, '#C59F89');
 
       ctx.fillStyle = cardGrad;
       ctx.fillRect(0, 0, w, h);
 
-      // Delicate Border Line
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-      ctx.lineWidth = 2;
+      // Soft white inner border for card dimensioning
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+      ctx.lineWidth = 1.5;
       ctx.strokeRect(10, 10, w - 20, h - 20);
 
-      // ✦ Scratch to Reveal ✦ Easy to Read Elegant Italic Serif
-      ctx.fillStyle = '#FFFFFF';
+      // Contemporary spaced-out uppercase sans-serif text
+      ctx.fillStyle = '#2A2022';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       
-      const fontSize = Math.min(Math.max(w / 22, 16), 22);
-      ctx.font = `italic 500 ${fontSize}px "Cormorant Garamond", serif`;
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+      const fontSize = Math.min(Math.max(w / 26, 11), 13);
+      ctx.font = `500 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.85)';
       ctx.shadowBlur = 3;
-      ctx.fillText('✦   Scratch to Reveal   ✦', w / 2, h / 2);
+      ctx.fillText('✦   U N V E I L   T H E   C O U N T D O W N   ✦', w / 2, h / 2);
       ctx.shadowColor = 'transparent';
     }
 
@@ -169,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         angle: 60,
         spread: 75,
         origin: { x: 0.05, y: 0.75 },
-        colors: ['#C5A059', '#F2B705', '#E8A598', '#1C352D', '#FAF8F5'],
+        colors: ['#C5A059', '#F3D0D5', '#E8A598', '#8A3E4E', '#FFF5F6'],
       });
 
       // Right Party Popper Cannon
@@ -178,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         angle: 120,
         spread: 75,
         origin: { x: 0.95, y: 0.75 },
-        colors: ['#C5A059', '#F2B705', '#E8A598', '#1C352D', '#FAF8F5'],
+        colors: ['#C5A059', '#F3D0D5', '#E8A598', '#8A3E4E', '#FFF5F6'],
       });
 
       // Center Big Party Popper Burst
@@ -443,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
           particleCount: 90,
           spread: 70,
           origin: { y: 0.6 },
-          colors: ['#C5A059', '#1C352D', '#D8B4A6', '#FAF8F5'],
+          colors: ['#C5A059', '#8A3E4E', '#F3D0D5', '#FFF5F6'],
         });
       }
       alert('Thank you! Your Royal RSVP has been received with joy.');
@@ -463,6 +471,139 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.scroll-reveal').forEach((el) => {
     scrollObserver.observe(el);
   });
+
+  // 9. INDIAN MULTI-LANGUAGE TRANSLATION ENGINE (ENG, HIN, PUN)
+  const translations = {
+    eng: {
+      mantra: "|| Shree Ganeshay Namah ||",
+      subtitle: "The Wedding Celebration of",
+      groom: "Aarav",
+      bride: "Anika",
+      weds: "weds",
+      date: "Saturday, November 28, 2026",
+      venue: "at The Oberoi Udaivilas, Udaipur",
+      countdownTitle: "SAVE THE DATE",
+      days: "DAYS",
+      hours: "HOURS",
+      mins: "MINUTES",
+      secs: "SECONDS",
+      eventsTitle: "Events Schedule",
+      hostsTitle: "With Blessings",
+      hostsSub: "WITH THE BLESSINGS OF OUR ELDERS",
+      hostsWelcomed: "Warmly Welcomed By",
+      hostsFamilies: "The Arora Family",
+      hostsGroomSide: "Groom's Family",
+      hostsBrideSide: "Bride's Family",
+      hostsBottomNote: '"Kindly join us to celebrate the auspicious Anand Karaj of our children."',
+      venueTitle: "Where We Celebrate",
+      directionsBtn: "Get Directions",
+      footerText: "WITH LOVE & BLESSINGS"
+    },
+    hin: {
+      mantra: "|| श्री गणेशाय नमः ||",
+      subtitle: "के पावन विवाह समारोह",
+      groom: "आरव",
+      bride: "अनिका",
+      weds: "संग",
+      date: "शनिवार, 28 नवंबर 2026",
+      venue: "द ओबेरॉय उदयविलास, उदयपुर में",
+      countdownTitle: "शुभ विवाह तिथि",
+      days: "दिन",
+      hours: "घंटे",
+      mins: "मिनट",
+      secs: "सेकंड",
+      eventsTitle: "कार्यक्रम सूची",
+      hostsTitle: "शुभ आशीर्वाद",
+      hostsSub: "पूज्य बुजुर्गों के आशीर्वाद से",
+      hostsWelcomed: "दर्शनाभिलाषी",
+      hostsFamilies: "अरोड़ा परिवार",
+      hostsGroomSide: "वर पक्ष",
+      hostsBrideSide: "वधू पक्ष",
+      hostsBottomNote: '"हमारे बच्चों के आनंद कारज के शुभ अवसर पर आपका सादर निमंत्रण है।"',
+      venueTitle: "उत्सव स्थल",
+      directionsBtn: "दिशा-निर्देश",
+      footerText: "स्नेह एवं आदर सहित"
+    },
+    pun: {
+      mantra: "|| ੴ ਸ੍ਰੀ ਗਣੇਸ਼ਾਏ ਨਮਹ ||",
+      subtitle: "ਦੇ ਪਵਿੱਤਰ ਵਿਆਹ ਸਮਾਗਮ",
+      groom: "ਆਰਵ",
+      bride: "ਅਨਿਕਾ",
+      weds: "ਸੰਗ",
+      date: "ਸ਼ਨੀਵਾਰ, 28 ਨਵੰਬਰ 2026",
+      venue: "ਦ ਓਬਰਾਏ ਉਦੈਵਿਲਾਸ, ਉਦੈਪੁਰ ਵਿਖੇ",
+      countdownTitle: "ਸ਼ੁਭ ਵਿਆਹ ਦੀ ਤਾਰੀਖ",
+      days: "ਦਿਨ",
+      hours: "ਘੰਟੇ",
+      mins: "ਮਿੰਟ",
+      secs: "ਸਕਿੰਟ",
+      eventsTitle: "ਪ੍ਰੋਗਰਾਮ ਸੂਚੀ",
+      hostsTitle: "ਸ਼ੁਭ ਅਸੀਸਾਂ",
+      hostsSub: "ਵੱਡਿਆਂ ਦੇ ਆਸ਼ੀਰਵਾਦ ਨਾਲ",
+      hostsWelcomed: "ਜੀ ਆਇਆਂ ਨੂੰ",
+      hostsFamilies: "ਅਰੋੜਾ ਪਰਿਵਾਰ",
+      hostsGroomSide: "ਲੜਕੇ ਵਾਲੇ",
+      hostsBrideSide: "ਲੜਕੀ ਵਾਲੇ",
+      hostsBottomNote: '"ਸਾਡੇ ਬੱਚਿਆਂ ਦੇ ਅਨੰਦ ਕਾਰਜ ਦੇ ਸ਼ੁਭ ਅਵਸਰ \'ਤੇ ਤੁਹਾਡੀ ਹਾਜ਼ਰੀ ਦੀ ਮੰਗ ਕਰਦੇ ਹਾਂ।"',
+      venueTitle: "ਵਿਆਹ ਦਾ ਸਥਾਨ",
+      directionsBtn: "ਦਿਸ਼า-ਨਿਰਦੇਸ਼",
+      footerText: "ਪਿਆਰ ਅਤੇ ਸਤਿਕਾਰ ਸਹਿਤ"
+    }
+  };
+
+  const langToggleBtn = document.getElementById('lang-toggle-btn');
+  const langDropdown = document.getElementById('language-dropdown');
+
+  if (langToggleBtn && langDropdown) {
+    // Open/Close dropdown
+    langToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('hidden');
+      langDropdown.classList.toggle('flex');
+    });
+
+    // Close dropdown on clicking outside
+    document.addEventListener('click', () => {
+      langDropdown.classList.add('hidden');
+      langDropdown.classList.remove('flex');
+    });
+
+    // Language selection click handling
+    const langOptions = document.querySelectorAll('.lang-opt');
+    langOptions.forEach((opt) => {
+      opt.addEventListener('click', (e) => {
+        const lang = e.currentTarget.getAttribute('data-lang');
+        setLanguage(lang);
+      });
+    });
+  }
+
+  function setLanguage(lang) {
+    if (!lang) return;
+
+    // Update trigger button display label
+    if (langToggleBtn) {
+      if (lang === 'hin') langToggleBtn.textContent = 'HIN';
+      else if (lang === 'pun') langToggleBtn.textContent = 'PUN';
+      else langToggleBtn.textContent = 'ENG';
+    }
+
+    // Dynamic replacement loop for elements with data-trans attribute
+    const transElements = document.querySelectorAll('[data-trans]');
+    transElements.forEach((el) => {
+      const key = el.getAttribute('data-trans');
+      if (translations[lang] && translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
+    });
+
+    // Save language selection to localStorage
+    localStorage.setItem('selectedLanguage', lang);
+  }
+
+  // Load language preference from local cache, default to ENG
+  const savedLang = localStorage.getItem('selectedLanguage') || 'eng';
+  setLanguage(savedLang);
 });
 
 // Helper Scroll Function
@@ -470,3 +611,169 @@ function scrollToId(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
+
+// ----------------------------------------------------
+// FULLSCREEN GALLERY LIGHTBOX MODAL
+// ----------------------------------------------------
+function openLightbox(src, caption) {
+  const modal = document.getElementById('gallery-lightbox');
+  const img = document.getElementById('lightbox-img');
+  const cap = document.getElementById('lightbox-caption');
+  if (!modal || !img) return;
+  img.src = src;
+  if (cap) cap.textContent = caption || '';
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeLightbox() {
+  const modal = document.getElementById('gallery-lightbox');
+  if (!modal) return;
+  modal.classList.remove('flex');
+  modal.classList.add('hidden');
+}
+
+window.openLightbox = openLightbox;
+window.closeLightbox = closeLightbox;
+
+// ----------------------------------------------------
+// 5-SECOND AUTOMATIC GALLERY CAROUSEL LOGIC
+// ----------------------------------------------------
+const gallerySlides = [
+  { 
+    img: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1200', 
+    thumb: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=300',
+    tag: 'Pre-Wedding', 
+    title: 'Bridal Elegance', 
+    desc: 'Timeless beauty in traditional attire' 
+  },
+  { 
+    img: 'https://images.pexels.com/photos/1024967/pexels-photo-1024967.jpeg?auto=compress&cs=tinysrgb&w=1200', 
+    thumb: 'https://images.pexels.com/photos/1024967/pexels-photo-1024967.jpeg?auto=compress&cs=tinysrgb&w=300',
+    tag: 'Ceremony', 
+    title: 'Maiyan & Haldi Rituals', 
+    desc: 'Vibrant yellow turmeric colors & blessings' 
+  },
+  { 
+    img: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1200', 
+    thumb: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=300',
+    tag: 'Celebration', 
+    title: 'Mehndi Celebration', 
+    desc: 'Beautiful henna art & joyful celebrations' 
+  },
+  { 
+    img: 'https://images.pexels.com/photos/1043902/pexels-photo-1043902.jpeg?auto=compress&cs=tinysrgb&w=1200', 
+    thumb: 'https://images.pexels.com/photos/1043902/pexels-photo-1043902.jpeg?auto=compress&cs=tinysrgb&w=300',
+    tag: 'Ritual', 
+    title: 'Baraat Swagat & Milni', 
+    desc: 'Grand royal welcome & traditional milni' 
+  },
+  { 
+    img: 'https://images.pexels.com/photos/3014856/pexels-photo-3014856.jpeg?auto=compress&cs=tinysrgb&w=1200', 
+    thumb: 'https://images.pexels.com/photos/3014856/pexels-photo-3014856.jpeg?auto=compress&cs=tinysrgb&w=300',
+    tag: 'Sacred Karaj', 
+    title: 'Sacred Anand Karaj', 
+    desc: 'Holy ceremony of eternal union' 
+  },
+  { 
+    img: 'https://images.pexels.com/photos/1045541/pexels-photo-1045541.jpeg?auto=compress&cs=tinysrgb&w=1200', 
+    thumb: 'https://images.pexels.com/photos/1045541/pexels-photo-1045541.jpeg?auto=compress&cs=tinysrgb&w=300',
+    tag: 'Blessings', 
+    title: 'Eternal Promises', 
+    desc: 'Two souls united together forever' 
+  }
+];
+
+let currentSlideIdx = 0;
+let carouselTimer = null;
+
+function updateGalleryCarouselUI() {
+  const featuredImg = document.getElementById('carousel-featured-img');
+  const tagEl = document.getElementById('carousel-category-tag');
+  const titleEl = document.getElementById('carousel-title');
+  const descEl = document.getElementById('carousel-desc');
+  const dotsContainer = document.getElementById('carousel-dots-container');
+
+  if (!featuredImg || !gallerySlides[currentSlideIdx]) return;
+
+  const current = gallerySlides[currentSlideIdx];
+
+  featuredImg.style.opacity = '0.3';
+  setTimeout(() => {
+    featuredImg.src = current.img;
+    if (tagEl) tagEl.textContent = current.tag;
+    if (titleEl) titleEl.textContent = current.title;
+    if (descEl) descEl.textContent = current.desc;
+    featuredImg.style.opacity = '1';
+  }, 200);
+
+  // Update dots
+  if (dotsContainer) {
+    let dotsHTML = '';
+    for (let i = 0; i < gallerySlides.length; i++) {
+      const cls = i === currentSlideIdx ? 'bg-[#C5A059] w-5' : 'bg-white/40';
+      dotsHTML += `<span onclick="setGallerySlide(${i})" class="w-2 h-2 rounded-full cursor-pointer transition-all ${cls}"></span>`;
+    }
+    dotsContainer.innerHTML = dotsHTML;
+  }
+
+  // Update thumbnails
+  const thumbs = document.querySelectorAll('.carousel-thumb');
+  thumbs.forEach((thumb, idx) => {
+    const thumbImg = thumb.querySelector('img');
+    if (thumbImg && gallerySlides[idx]) {
+      thumbImg.src = gallerySlides[idx].thumb;
+    }
+    if (idx === currentSlideIdx) {
+      thumb.classList.add('border-2', 'border-[#C5A059]', 'opacity-100', 'scale-105');
+      thumb.classList.remove('opacity-60');
+    } else {
+      thumb.classList.remove('border-2', 'opacity-100', 'scale-105');
+      thumb.classList.add('opacity-60');
+    }
+  });
+}
+
+function nextGallerySlide() {
+  currentSlideIdx = (currentSlideIdx + 1) % gallerySlides.length;
+  updateGalleryCarouselUI();
+}
+
+function prevGallerySlide() {
+  currentSlideIdx = (currentSlideIdx - 1 + gallerySlides.length) % gallerySlides.length;
+  updateGalleryCarouselUI();
+}
+
+function setGallerySlide(index) {
+  if (index >= 0 && index < gallerySlides.length) {
+    currentSlideIdx = index;
+    updateGalleryCarouselUI();
+    resetCarouselTimer();
+  }
+}
+
+function openCurrentCarouselLightbox() {
+  const current = gallerySlides[currentSlideIdx];
+  if (current && window.openLightbox) {
+    window.openLightbox(current.img, current.title);
+  }
+}
+
+function resetCarouselTimer() {
+  if (carouselTimer) clearInterval(carouselTimer);
+  carouselTimer = setInterval(() => {
+    nextGallerySlide();
+  }, 5000);
+}
+
+// Expose slide functions globally
+window.nextGallerySlide = nextGallerySlide;
+window.prevGallerySlide = prevGallerySlide;
+window.setGallerySlide = setGallerySlide;
+window.openCurrentCarouselLightbox = openCurrentCarouselLightbox;
+
+// Initialize slide rotation when script starts
+setTimeout(() => {
+  updateGalleryCarouselUI();
+  resetCarouselTimer();
+}, 200);
