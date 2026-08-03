@@ -248,19 +248,10 @@ body.is-revealed .hero-anim-btn {
 .royal-gold-frame {
   position: relative;
   border-radius: 50%;
-  padding: 4px;
-  background: linear-gradient(135deg, #C5A059 0%, #FAF0D7 30%, #C5A059 70%, #E6C685 100%);
-  box-shadow: 0 12px 28px -6px rgba(28, 53, 45, 0.15), 0 0 20px rgba(197, 160, 89, 0.35);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.royal-gold-frame::after {
-  content: '';
-  position: absolute;
-  inset: 2.5px;
-  border-radius: 50%;
-  border: 1px dashed rgba(255, 255, 255, 0.7);
-  pointer-events: none;
+  padding: 3px;
+  background: linear-gradient(135deg, #C5A059 0%, #FAF0D7 35%, #E6C685 65%, #C5A059 100%);
+  box-shadow: 0 6px 24px -4px rgba(0,0,0,0.18), 0 0 16px rgba(197, 160, 89, 0.25);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* CUSTOM CURSOR */

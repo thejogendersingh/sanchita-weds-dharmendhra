@@ -411,8 +411,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateAudioButtonUI(playing) {
     const btn = document.getElementById('audio-toggle-btn');
+    const label = document.getElementById('audio-label');
     if (btn) {
-      btn.innerHTML = playing ? '<i data-lucide="volume-2" class="w-5 h-5 text-royal-gold"></i>' : '<i data-lucide="volume-x" class="w-5 h-5 text-royal-gold/60"></i>';
+      btn.innerHTML = playing
+        ? '<i data-lucide="volume-2" style="width:14px;height:14px;color:#C5A059;flex-shrink:0;"></i><span id="audio-label" style="font-size:9px;font-weight:700;letter-spacing:0.18em;color:#C5A059;text-transform:uppercase;white-space:nowrap;">MUSIC</span>'
+        : '<i data-lucide="volume-x" style="width:14px;height:14px;color:rgba(255,255,255,0.35);flex-shrink:0;"></i><span id="audio-label" style="font-size:9px;font-weight:700;letter-spacing:0.18em;color:rgba(255,255,255,0.35);text-transform:uppercase;white-space:nowrap;">MUTED</span>';
       if (window.lucide) lucide.createIcons();
     }
   }
@@ -548,6 +551,106 @@ document.addEventListener('DOMContentLoaded', () => {
       venueTitle: "ਵਿਆਹ ਦਾ ਸਥਾਨ",
       directionsBtn: "ਦਿਸ਼า-ਨਿਰਦੇਸ਼",
       footerText: "ਪਿਆਰ ਅਤੇ ਸਤਿਕਾਰ ਸਹਿਤ"
+    },
+    mar: {
+      mantra: "|| श्री गणेशाय नमः ||",
+      subtitle: "यांच्या शुभ विवाह सोहळ्यात",
+      groom: "आरव",
+      bride: "अनिका",
+      weds: "विवाह करतात",
+      date: "शनिवार, २८ नोव्हेंबर २०२६",
+      venue: "द ओबेरॉय उदयविलास, उदयपूर येथे",
+      countdownTitle: "शुभ विवाह तिथी",
+      days: "दिवस",
+      hours: "तास",
+      mins: "मिनिटे",
+      secs: "सेकंद",
+      eventsTitle: "कार्यक्रम सूची",
+      hostsTitle: "आशीर्वादासह",
+      hostsSub: "वडिलधाऱ्यांच्या आशीर्वादाने",
+      hostsWelcomed: "सादर आमंत्रण",
+      hostsFamilies: "अरोरा कुटुंब",
+      hostsGroomSide: "वर पक्ष",
+      hostsBrideSide: "वधू पक्ष",
+      hostsBottomNote: '"आमच्या मुलांच्या शुभ विवाह सोहळ्यात आपल्या उपस्थितीसाठी नम्र विनंती आहे."',
+      venueTitle: "उत्सव स्थळ",
+      directionsBtn: "दिशानिर्देश",
+      footerText: "प्रेम व शुभेच्छांसह"
+    },
+    guj: {
+      mantra: "|| શ્રી ગણેશાય નમઃ ||",
+      subtitle: "ના પવિત્ર વિવાહ સમારોહ",
+      groom: "આરવ",
+      bride: "અનિકા",
+      weds: "સાથે",
+      date: "શનિવાર, ૨૮ નવેમ્બર ૨૦૨૬",
+      venue: "ધ ઓબેરોઈ ઉદય વિલાસ, ઉદયપુર ખાતે",
+      countdownTitle: "શુભ વિવાહ તિથિ",
+      days: "દિવસ",
+      hours: "કલાક",
+      mins: "મિનિટ",
+      secs: "સેકન્ડ",
+      eventsTitle: "કાર્યક્રમ સૂચિ",
+      hostsTitle: "આશીર્વાદ સહિત",
+      hostsSub: "વડીલોના આશીર્વાદ સાથે",
+      hostsWelcomed: "સ્વાગત છે",
+      hostsFamilies: "અરોરા પરિવાર",
+      hostsGroomSide: "વર પક્ષ",
+      hostsBrideSide: "વધૂ પક્ષ",
+      hostsBottomNote: '"અમારા સંતાનના આનંદ કારજ પ્રસંગે આપની ઉપસ્થિતિ ઈચ્છીએ છીએ."',
+      venueTitle: "ઉત્સવ સ્થળ",
+      directionsBtn: "દિશા-નિર્દેશ",
+      footerText: "પ્રેમ અને શ્રદ્ધા સહ"
+    },
+    tam: {
+      mantra: "|| ஸ்ரீ கணேசாய நமஹ ||",
+      subtitle: "திருமண விழாவில்",
+      groom: "ஆரவ்",
+      bride: "அனிகா",
+      weds: "மணக்கிறார்",
+      date: "சனிக்கிழமை, நவம்பர் 28, 2026",
+      venue: "த ஓபரா உதய்விலாஸ், உதய்பூர்",
+      countdownTitle: "திருமண நாள்",
+      days: "நாட்கள்",
+      hours: "மணி",
+      mins: "நிமிடம்",
+      secs: "வினாடி",
+      eventsTitle: "நிகழ்ச்சிகள்",
+      hostsTitle: "ஆசியோடு",
+      hostsSub: "பெரியோர்களின் ஆசியோடு",
+      hostsWelcomed: "அன்போடு அழைக்கிறோம்",
+      hostsFamilies: "அரோரா குடும்பம்",
+      hostsGroomSide: "மணமகன் தரப்பு",
+      hostsBrideSide: "மணமகள் தரப்பு",
+      hostsBottomNote: '"எங்கள் பிள்ளைகளின் திருமண விழாவில் கலந்துகொள்ள அன்போடு அழைக்கிறோம்."',
+      venueTitle: "கொண்டாட்ட இடம்",
+      directionsBtn: "வழி காட்டு",
+      footerText: "அன்பும் ஆசியும்"
+    },
+    tel: {
+      mantra: "|| శ్రీ గణేశాయ నమః ||",
+      subtitle: "వివాహ వేడుకకు",
+      groom: "ఆరవ్",
+      bride: "అనిక",
+      weds: "వివాహమాడుతున్నారు",
+      date: "శనివారం, నవంబర్ 28, 2026",
+      venue: "ది ఒబెరాయ్ ఉదయ్‌విలాస్, ఉదయపూర్",
+      countdownTitle: "శుభ వివాహ తేదీ",
+      days: "రోజులు",
+      hours: "గంటలు",
+      mins: "నిమిషాలు",
+      secs: "సెకన్లు",
+      eventsTitle: "కార్యక్రమాలు",
+      hostsTitle: "ఆశీర్వాదంతో",
+      hostsSub: "పెద్దల ఆశీర్వాదంతో",
+      hostsWelcomed: "ఆత్మీయంగా ఆహ్వానిస్తున్నాం",
+      hostsFamilies: "అరోరా కుటుంబం",
+      hostsGroomSide: "వరుడి వైపు",
+      hostsBrideSide: "వధువు వైపు",
+      hostsBottomNote: '"మా పిల్లల వివాహ వేడుకలో మీ సమక్షం కోసం ఆత్మీయంగా వేడుకుంటున్నాం."',
+      venueTitle: "వేడుక స్థలం",
+      directionsBtn: "దిశలు పొందండి",
+      footerText: "ప్రేమతో మరియు ఆశీర్వాదంతో"
     }
   };
 
@@ -555,37 +658,68 @@ document.addEventListener('DOMContentLoaded', () => {
   const langDropdown = document.getElementById('language-dropdown');
 
   if (langToggleBtn && langDropdown) {
-    // Open/Close dropdown
+    let langOpen = false;
+
+    function openLangDropdown() {
+      langOpen = true;
+      langDropdown.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4', 'scale-95');
+      langDropdown.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+    }
+
+    function closeLangDropdown() {
+      langOpen = false;
+      langDropdown.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4', 'scale-95');
+      langDropdown.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+    }
+
     langToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      langDropdown.classList.toggle('hidden');
-      langDropdown.classList.toggle('flex');
+      langOpen ? closeLangDropdown() : openLangDropdown();
     });
 
-    // Close dropdown on clicking outside
     document.addEventListener('click', () => {
-      langDropdown.classList.add('hidden');
-      langDropdown.classList.remove('flex');
+      if (langOpen) closeLangDropdown();
     });
 
-    // Language selection click handling
     const langOptions = document.querySelectorAll('.lang-opt');
     langOptions.forEach((opt) => {
+      // Hover effect via JS since buttons use inline styles
+      opt.addEventListener('mouseenter', () => {
+        if (opt.getAttribute('data-lang') !== currentActiveLang) {
+          opt.style.color = '#C5A059';
+          opt.style.background = 'rgba(197,160,89,0.1)';
+          opt.style.borderColor = 'rgba(197,160,89,0.2)';
+        }
+      });
+      opt.addEventListener('mouseleave', () => {
+        if (opt.getAttribute('data-lang') !== currentActiveLang) {
+          opt.style.color = 'rgba(255,255,255,0.65)';
+          opt.style.background = 'rgba(255,255,255,0.04)';
+          opt.style.borderColor = 'rgba(255,255,255,0.08)';
+        }
+      });
       opt.addEventListener('click', (e) => {
         const lang = e.currentTarget.getAttribute('data-lang');
         setLanguage(lang);
+        closeLangDropdown();
       });
     });
   }
 
+  let currentActiveLang = 'eng';
+
   function setLanguage(lang) {
     if (!lang) return;
+    currentActiveLang = lang;
 
-    // Update trigger button display label
-    if (langToggleBtn) {
-      if (lang === 'hin') langToggleBtn.textContent = 'HIN';
-      else if (lang === 'pun') langToggleBtn.textContent = 'PUN';
-      else langToggleBtn.textContent = 'ENG';
+    // Update the lang-label span only (preserves the icon)
+    const langLabel = document.getElementById('lang-label');
+    if (langLabel) {
+      const labels = {
+        eng: 'ENG', hin: 'हिन', pun: 'ਪੰਜ',
+        mar: 'मरा', guj: 'ગુજ', tam: 'தமி', tel: 'తెలు'
+      };
+      langLabel.textContent = labels[lang] || 'ENG';
     }
 
     // Dynamic replacement loop for elements with data-trans attribute
@@ -597,7 +731,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Save language selection to localStorage
+    // Highlight active pill via inline style (buttons use inline CSS)
+    document.querySelectorAll('.lang-opt').forEach(btn => {
+      const isActive = btn.getAttribute('data-lang') === lang;
+      if (isActive) {
+        btn.style.color = '#C5A059';
+        btn.style.background = 'rgba(197,160,89,0.15)';
+        btn.style.borderColor = 'rgba(197,160,89,0.35)';
+      } else {
+        btn.style.color = 'rgba(255,255,255,0.65)';
+        btn.style.background = 'rgba(255,255,255,0.04)';
+        btn.style.borderColor = 'rgba(255,255,255,0.08)';
+      }
+    });
+
     localStorage.setItem('selectedLanguage', lang);
   }
 
