@@ -7,24 +7,67 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // 1. ENVELOPE OPENING & ENTRY ANIMATION
   const doorOverlay = document.getElementById('door-overlay');
-  const doorSealBtn = document.getElementById('door-seal-btn');
+  const envelopeVideo = document.getElementById('envelope-video');
+  const overlayCta = document.getElementById('overlay-cta');
 
-  // Trigger staggered animations on load are handled by CSS animations now.
+  let videoStarted = false;
+  let fallbackTimeout = null;
 
   function openRoyalDoor() {
-    if (!doorOverlay || doorOverlay.classList.contains('is-opened')) return;
+    if (!doorOverlay || doorOverlay.classList.contains('is-opened') || videoStarted) return;
     
+    videoStarted = true;
+
+    // Fade out the CTA text immediately
+    if (overlayCta) {
+      overlayCta.style.opacity = '0';
+      overlayCta.style.transition = 'opacity 0.4s ease';
+    }
+
+    // Play the envelope opening video
+    if (envelopeVideo) {
+      // Force reload metadata just in case, and play
+      envelopeVideo.preload = "auto";
+      
+      // Calculate safety fallback timer (max 4.5s or video duration + 0.2s)
+      let duration = envelopeVideo.duration || 3.5;
+      if (isNaN(duration) || duration <= 0) duration = 3.5;
+      
+      fallbackTimeout = setTimeout(() => {
+        console.log('Video play safety timeout reached.');
+        finishOpening();
+      }, (duration * 1000) + 200);
+
+      // Safe HTMLMediaElement.play() invocation to support older browsers/safari
+      const playPromise = envelopeVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          // Video playing successfully
+        }).catch(err => {
+          console.log('Video play error, falling back:', err);
+          finishOpening();
+        });
+      }
+
+      envelopeVideo.addEventListener('ended', finishOpening);
+    } else {
+      finishOpening();
+    }
+  }
+
+  function finishOpening() {
+    if (fallbackTimeout) {
+      clearTimeout(fallbackTimeout);
+      fallbackTimeout = null;
+    }
+
+    if (!doorOverlay || doorOverlay.classList.contains('is-opened')) return;
+
     // Trigger opening transition
     doorOverlay.classList.add('is-opened');
 
     // Trigger hero content micro-motion reveal
     document.body.classList.add('is-revealed');
-
-    // Ensure background video plays (bypasses potential mobile restrictions on pre-interaction autoplay)
-    const heroVideo = document.querySelector('.hero-bg-video');
-    if (heroVideo) {
-      heroVideo.play().catch(err => console.log('Video play error:', err));
-    }
 
     // Hide door overlay after smooth 2.0s transition completes
     setTimeout(() => {
@@ -35,8 +78,15 @@ document.addEventListener('DOMContentLoaded', () => {
     startIndianRagaMusic();
   }
 
-  if (doorOverlay) doorOverlay.addEventListener('click', openRoyalDoor);
-  if (doorSealBtn) doorSealBtn.addEventListener('click', openRoyalDoor);
+  // Expose globally for inline HTML onclick binding
+  window.openRoyalDoor = openRoyalDoor;
+
+  if (doorOverlay) {
+    doorOverlay.addEventListener('click', openRoyalDoor);
+    doorOverlay.addEventListener('touchstart', (e) => {
+      openRoyalDoor();
+    }, { passive: true });
+  }
 
   // 2. LIVE COUNTDOWN TIMER
   const destination = new Date('2026-11-28T16:00:00').getTime();
@@ -232,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('touchend', () => { isScratching = false; });
   }
 
-  // 4. 60FPS PETALS CANVAS SIMULATION
+  // 4. 60FPS PETALS CANVAS SIMULATION (FLOWER IMAGES)
   const canvas = document.getElementById('petals-canvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -244,21 +294,28 @@ document.addEventListener('DOMContentLoaded', () => {
       height = canvas.height = window.innerHeight;
     });
 
+    const img1 = new Image();
+    img1.src = 'assets/flower1.webp';
+    const img2 = new Image();
+    img2.src = 'assets/flower2.webp';
+    const img3 = new Image();
+    img3.src = 'assets/flower3.webp';
+    const flowerImages = [img1, img2, img3];
+
     const petals = [];
-    const count = Math.min(Math.floor(width / 22), 65);
-    const colors = ['#D8B4A6', '#C5A059', '#E8D4C8', '#D4A396', '#FFFDF9', '#F4EAD4', '#8C263E'];
+    const count = Math.min(Math.floor(width / 24), 50); // Clean quantity for elegant flow
 
     for (let i = 0; i < count; i++) {
       petals.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.random() * 9 + 5,
-        speedY: Math.random() * 0.9 + 0.4,
-        speedX: Math.random() * 0.6 - 0.3,
+        size: Math.random() * 10 + 16, // Beautiful visible size (16px to 26px)
+        speedY: Math.random() * 0.9 + 0.4, // Gentle speed matching original hearts
+        speedX: Math.random() * 0.6 - 0.3, // Gentle drift matching original hearts
         rotation: Math.random() * Math.PI * 2,
-        rotationSpeed: (Math.random() - 0.5) * 0.02,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        opacity: Math.random() * 0.35 + 0.2, // Gentle soft low opacity
+        rotationSpeed: (Math.random() - 0.5) * 0.03,
+        image: flowerImages[Math.floor(Math.random() * flowerImages.length)],
+        opacity: Math.random() * 0.3 + 0.5, // High premium opacity for visibility
       });
     }
 
@@ -269,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       petals.forEach((p) => {
         p.y += p.speedY;
-        p.x += p.speedX + Math.sin(wind + p.y * 0.002) * 0.4;
+        p.x += p.speedX + Math.sin(wind + p.y * 0.002) * 0.3;
         p.rotation += p.rotationSpeed;
 
         if (p.y > height + 20) { p.y = -20; p.x = Math.random() * width; }
@@ -280,13 +337,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.translate(p.x, p.y);
         ctx.rotate(p.rotation);
         ctx.globalAlpha = p.opacity;
-        ctx.fillStyle = p.color;
 
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(-p.size / 2, -p.size, -p.size, p.size / 3, 0, p.size);
-        ctx.bezierCurveTo(p.size, p.size / 3, p.size / 2, -p.size, 0, 0);
-        ctx.fill();
+        // Draw flower image centered at coordinate
+        ctx.drawImage(p.image, -p.size / 2, -p.size / 2, p.size, p.size);
         ctx.restore();
       });
 
@@ -480,8 +533,8 @@ document.addEventListener('DOMContentLoaded', () => {
     eng: {
       mantra: "|| Shree Ganeshay Namah ||",
       subtitle: "The Wedding Celebration of",
-      groom: "Aarav",
-      bride: "Anika",
+      groom: "Amardeep",
+      bride: "Srushti",
       weds: "weds",
       date: "Saturday, November 28, 2026",
       venue: "at The Oberoi Udaivilas, Udaipur",
@@ -494,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsTitle: "With Blessings",
       hostsSub: "WITH THE BLESSINGS OF OUR ELDERS",
       hostsWelcomed: "Warmly Welcomed By",
-      hostsFamilies: "The Arora Family",
+      hostsFamilies: "The Families",
       hostsGroomSide: "Groom's Family",
       hostsBrideSide: "Bride's Family",
       hostsBottomNote: '"Kindly join us to celebrate the auspicious Anand Karaj of our children."',
@@ -505,8 +558,8 @@ document.addEventListener('DOMContentLoaded', () => {
     hin: {
       mantra: "|| श्री गणेशाय नमः ||",
       subtitle: "के पावन विवाह समारोह",
-      groom: "आरव",
-      bride: "अनिका",
+      groom: "अमरदीप",
+      bride: "सृष्टि",
       weds: "संग",
       date: "शनिवार, 28 नवंबर 2026",
       venue: "द ओबेरॉय उदयविलास, उदयपुर में",
@@ -519,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsTitle: "शुभ आशीर्वाद",
       hostsSub: "पूज्य बुजुर्गों के आशीर्वाद से",
       hostsWelcomed: "दर्शनाभिलाषी",
-      hostsFamilies: "अरोड़ा परिवार",
+      hostsFamilies: "परिवार",
       hostsGroomSide: "वर पक्ष",
       hostsBrideSide: "वधू पक्ष",
       hostsBottomNote: '"हमारे बच्चों के आनंद कारज के शुभ अवसर पर आपका सादर निमंत्रण है।"',
@@ -530,8 +583,8 @@ document.addEventListener('DOMContentLoaded', () => {
     pun: {
       mantra: "|| ੴ ਸ੍ਰੀ ਗਣੇਸ਼ਾਏ ਨਮਹ ||",
       subtitle: "ਦੇ ਪਵਿੱਤਰ ਵਿਆਹ ਸਮਾਗਮ",
-      groom: "ਆਰਵ",
-      bride: "ਅਨਿਕਾ",
+      groom: "ਅਮਰਦੀਪ",
+      bride: "ਸ੍ਰਿਸ਼ਟੀ",
       weds: "ਸੰਗ",
       date: "ਸ਼ਨੀਵਾਰ, 28 ਨਵੰਬਰ 2026",
       venue: "ਦ ਓਬਰਾਏ ਉਦੈਵਿਲਾਸ, ਉਦੈਪੁਰ ਵਿਖੇ",
@@ -544,19 +597,19 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsTitle: "ਸ਼ੁਭ ਅਸੀਸਾਂ",
       hostsSub: "ਵੱਡਿਆਂ ਦੇ ਆਸ਼ੀਰਵਾਦ ਨਾਲ",
       hostsWelcomed: "ਜੀ ਆਇਆਂ ਨੂੰ",
-      hostsFamilies: "ਅਰੋੜਾ ਪਰਿਵਾਰ",
+      hostsFamilies: "ਪਰਿਵਾਰ",
       hostsGroomSide: "ਲੜਕੇ ਵਾਲੇ",
       hostsBrideSide: "ਲੜਕੀ ਵਾਲੇ",
       hostsBottomNote: '"ਸਾਡੇ ਬੱਚਿਆਂ ਦੇ ਅਨੰਦ ਕਾਰਜ ਦੇ ਸ਼ੁਭ ਅਵਸਰ \'ਤੇ ਤੁਹਾਡੀ ਹਾਜ਼ਰੀ ਦੀ ਮੰਗ ਕਰਦੇ ਹਾਂ।"',
       venueTitle: "ਵਿਆਹ ਦਾ ਸਥਾਨ",
-      directionsBtn: "ਦਿਸ਼า-ਨਿਰਦੇਸ਼",
+      directionsBtn: "ਦਿਸ਼ਾ-ਨਿਰਦੇਸ਼",
       footerText: "ਪਿਆਰ ਅਤੇ ਸਤਿਕਾਰ ਸਹਿਤ"
     },
     mar: {
       mantra: "|| श्री गणेशाय नमः ||",
       subtitle: "यांच्या शुभ विवाह सोहळ्यात",
-      groom: "आरव",
-      bride: "अनिका",
+      groom: "अमरदीप",
+      bride: "सृष्टी",
       weds: "विवाह करतात",
       date: "शनिवार, २८ नोव्हेंबर २०२६",
       venue: "द ओबेरॉय उदयविलास, उदयपूर येथे",
@@ -564,24 +617,24 @@ document.addEventListener('DOMContentLoaded', () => {
       days: "दिवस",
       hours: "तास",
       mins: "मिनिटे",
-      secs: "सेकंद",
+      secs: "सेकंड",
       eventsTitle: "कार्यक्रम सूची",
       hostsTitle: "आशीर्वादासह",
       hostsSub: "वडिलधाऱ्यांच्या आशीर्वादाने",
       hostsWelcomed: "सादर आमंत्रण",
-      hostsFamilies: "अरोरा कुटुंब",
+      hostsFamilies: "कुटुंब",
       hostsGroomSide: "वर पक्ष",
       hostsBrideSide: "वधू पक्ष",
       hostsBottomNote: '"आमच्या मुलांच्या शुभ विवाह सोहळ्यात आपल्या उपस्थितीसाठी नम्र विनंती आहे."',
       venueTitle: "उत्सव स्थळ",
-      directionsBtn: "दिशानिर्देश",
+      directionsBtn: "દિશાનિર્દેશ",
       footerText: "प्रेम व शुभेच्छांसह"
     },
     guj: {
       mantra: "|| શ્રી ગણેશાય નમઃ ||",
       subtitle: "ના પવિત્ર વિવાહ સમારોહ",
-      groom: "આરવ",
-      bride: "અનિકા",
+      groom: "અમરદીપ",
+      bride: "સૃષ્ટિ",
       weds: "સાથે",
       date: "શનિવાર, ૨૮ નવેમ્બર ૨૦૨૬",
       venue: "ધ ઓબેરોઈ ઉદય વિલાસ, ઉદયપુર ખાતે",
@@ -594,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsTitle: "આશીર્વાદ સહિત",
       hostsSub: "વડીલોના આશીર્વાદ સાથે",
       hostsWelcomed: "સ્વાગત છે",
-      hostsFamilies: "અરોરા પરિવાર",
+      hostsFamilies: "પરિવાર",
       hostsGroomSide: "વર પક્ષ",
       hostsBrideSide: "વધૂ પક્ષ",
       hostsBottomNote: '"અમારા સંતાનના આનંદ કારજ પ્રસંગે આપની ઉપસ્થિતિ ઈચ્છીએ છીએ."',
@@ -605,8 +658,8 @@ document.addEventListener('DOMContentLoaded', () => {
     tam: {
       mantra: "|| ஸ்ரீ கணேசாய நமஹ ||",
       subtitle: "திருமண விழாவில்",
-      groom: "ஆரவ்",
-      bride: "அனிகா",
+      groom: "அமர்தீப்",
+      bride: "சிருஷ்டி",
       weds: "மணக்கிறார்",
       date: "சனிக்கிழமை, நவம்பர் 28, 2026",
       venue: "த ஓபரா உதய்விலாஸ், உதய்பூர்",
@@ -619,7 +672,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsTitle: "ஆசியோடு",
       hostsSub: "பெரியோர்களின் ஆசியோடு",
       hostsWelcomed: "அன்போடு அழைக்கிறோம்",
-      hostsFamilies: "அரோரா குடும்பம்",
+      hostsFamilies: "குடும்பங்கள்",
       hostsGroomSide: "மணமகன் தரப்பு",
       hostsBrideSide: "மணமகள் தரப்பு",
       hostsBottomNote: '"எங்கள் பிள்ளைகளின் திருமண விழாவில் கலந்துகொள்ள அன்போடு அழைக்கிறோம்."',
@@ -630,8 +683,8 @@ document.addEventListener('DOMContentLoaded', () => {
     tel: {
       mantra: "|| శ్రీ గణేశాయ నమః ||",
       subtitle: "వివాహ వేడుకకు",
-      groom: "ఆరవ్",
-      bride: "అనిక",
+      groom: "అమరదీప్",
+      bride: "సృష్టి",
       weds: "వివాహమాడుతున్నారు",
       date: "శనివారం, నవంబర్ 28, 2026",
       venue: "ది ఒబెరాయ్ ఉదయ్‌విలాస్, ఉదయపూర్",
@@ -644,7 +697,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsTitle: "ఆశీర్వాదంతో",
       hostsSub: "పెద్దల ఆశీర్వాదంతో",
       hostsWelcomed: "ఆత్మీయంగా ఆహ్వానిస్తున్నాం",
-      hostsFamilies: "అరోరా కుటుంబం",
+      hostsFamilies: "కుటుంబాలు",
       hostsGroomSide: "వరుడి వైపు",
       hostsBrideSide: "వధువు వైపు",
       hostsBottomNote: '"మా పిల్లల వివాహ వేడుకలో మీ సమక్షం కోసం ఆత్మీయంగా వేడుకుంటున్నాం."',
@@ -745,6 +798,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Apply styling class for Devanagari/Gurmukhi to prevent vertical overlap
+    const heroTitleContainer = document.querySelector('.hero-anim-title');
+    if (heroTitleContainer) {
+      if (lang === 'eng') {
+        heroTitleContainer.classList.remove('lang-non-eng');
+      } else {
+        heroTitleContainer.classList.add('lang-non-eng');
+      }
+    }
+
     localStorage.setItem('selectedLanguage', lang);
   }
 
@@ -788,44 +851,30 @@ window.closeLightbox = closeLightbox;
 // ----------------------------------------------------
 const gallerySlides = [
   { 
-    img: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1200', 
-    thumb: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=300',
+    img: 'assets/gallery1.webp', 
+    thumb: 'assets/gallery1.webp',
     tag: 'Pre-Wedding', 
-    title: 'Bridal Elegance', 
-    desc: 'Timeless beauty in traditional attire' 
+    title: 'Cherished Moments', 
+    desc: 'Capturing our beautiful memories together' 
   },
   { 
-    img: 'https://images.pexels.com/photos/1024967/pexels-photo-1024967.jpeg?auto=compress&cs=tinysrgb&w=1200', 
-    thumb: 'https://images.pexels.com/photos/1024967/pexels-photo-1024967.jpeg?auto=compress&cs=tinysrgb&w=300',
+    img: 'assets/gallery2.webp', 
+    thumb: 'assets/gallery2.webp',
     tag: 'Ceremony', 
-    title: 'Maiyan & Haldi Rituals', 
-    desc: 'Vibrant yellow turmeric colors & blessings' 
+    title: 'Traditional Blessings', 
+    desc: 'Sacred rituals of love and union' 
   },
   { 
-    img: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1200', 
-    thumb: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=300',
+    img: 'assets/gallery3.webp', 
+    thumb: 'assets/gallery3.webp',
     tag: 'Celebration', 
-    title: 'Mehndi Celebration', 
-    desc: 'Beautiful henna art & joyful celebrations' 
+    title: 'Joyous Festivities', 
+    desc: 'Celebrating love with family and friends' 
   },
   { 
-    img: 'https://images.pexels.com/photos/1043902/pexels-photo-1043902.jpeg?auto=compress&cs=tinysrgb&w=1200', 
-    thumb: 'https://images.pexels.com/photos/1043902/pexels-photo-1043902.jpeg?auto=compress&cs=tinysrgb&w=300',
-    tag: 'Ritual', 
-    title: 'Baraat Swagat & Milni', 
-    desc: 'Grand royal welcome & traditional milni' 
-  },
-  { 
-    img: 'https://images.pexels.com/photos/3014856/pexels-photo-3014856.jpeg?auto=compress&cs=tinysrgb&w=1200', 
-    thumb: 'https://images.pexels.com/photos/3014856/pexels-photo-3014856.jpeg?auto=compress&cs=tinysrgb&w=300',
-    tag: 'Sacred Karaj', 
-    title: 'Sacred Anand Karaj', 
-    desc: 'Holy ceremony of eternal union' 
-  },
-  { 
-    img: 'https://images.pexels.com/photos/1045541/pexels-photo-1045541.jpeg?auto=compress&cs=tinysrgb&w=1200', 
-    thumb: 'https://images.pexels.com/photos/1045541/pexels-photo-1045541.jpeg?auto=compress&cs=tinysrgb&w=300',
-    tag: 'Blessings', 
+    img: 'assets/gallery4.webp', 
+    thumb: 'assets/gallery4.webp',
+    tag: 'Holy Matrimony', 
     title: 'Eternal Promises', 
     desc: 'Two souls united together forever' 
   }
