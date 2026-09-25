@@ -17,7 +17,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Pinyon+Script&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -47,6 +47,8 @@
           },
           fontFamily: {
             serif: ['Cormorant Garamond', 'serif'],
+            cinzel: ['Cinzel Decorative', 'serif'],
+            pinyon: ['Pinyon Script', 'cursive'],
             cursive: ['Great Vibes', 'cursive'],
             display: ['Instrument Serif', 'serif'],
             sans: ['Plus Jakarta Sans', 'sans-serif'],
@@ -57,23 +59,24 @@
   </script>
 
   <!-- Preload Critical Above-The-Fold Hero Background -->
+  <link rel="preload" as="video" href="assets/hero-bg.mp4" type="video/mp4" />
   <link rel="preload" as="image" href="assets/hero-bg(1).webp" type="image/webp" />
-  <link rel="stylesheet" href="style.css?v=3.24" />
+  <link rel="stylesheet" href="style.css?v=3.59" />
 </head>
 <body class="bg-ivory-100 text-charcoal font-sans antialiased overflow-x-hidden">
 
   <!-- ENVELOPE ENTRANCE OVERLAY -->
-  <div id="door-overlay" class="door-overlay flex flex-col items-center justify-center px-4 cursor-pointer" onclick="openRoyalDoor()">
-    <!-- Background Video -->
-    <div class="absolute inset-0 z-0 pointer-events-none">
-      <video id="envelope-video" muted playsinline class="w-full h-full object-cover">
+  <div id="door-overlay" class="door-overlay flex flex-col items-center justify-center cursor-pointer overflow-hidden" onclick="openRoyalDoor()">
+    <!-- Background Video Wrapper (Guaranteed Full Width Mobile Fit) -->
+    <div class="absolute inset-0 z-0 pointer-events-none w-full h-full overflow-hidden flex items-center justify-center">
+      <video id="envelope-video" muted playsinline class="w-full h-full object-cover object-center min-w-full min-h-full">
         <source src="assets/envolp-open.mp4" type="video/mp4" />
       </video>
     </div>
 
-    <!-- Bottom Tap to Open Text (Positioned absolutely at bottom to avoid overlapping middle envelope) -->
-    <div id="overlay-cta" class="absolute bottom-[16%] left-0 right-0 w-full text-center z-10 opacity-0 envelope-text-bottom">
-      <p class="font-cursive text-4xl sm:text-5xl text-white font-medium tracking-wide">
+    <!-- Bottom Tap to Open Text -->
+    <div id="overlay-cta" class="absolute bottom-[14%] left-0 right-0 w-full text-center z-10 opacity-0 envelope-text-bottom">
+      <p class="font-cursive text-4xl sm:text-5xl text-white font-medium tracking-wide drop-shadow-md">
         Tap to open
       </p>
     </div>
@@ -84,218 +87,101 @@
 
   <!-- CUSTOM MAGNETIC CURSOR -->
   <div id="custom-cursor-dot" class="custom-cursor-dot"></div>
-  <div id="custom-cursor-ring" class="custom-cursor-ring"><span id="cursor-text"></span></div>
-
-  <!-- PREMIUM FLOATING AUDIO PILL -->
-  <button id="audio-toggle-btn" aria-label="Toggle Music"
-    style="
-      position: fixed; bottom: 24px; left: 24px; z-index: 50;
-      display: flex; align-items: center; gap: 8px;
-      padding: 0 16px; height: 42px;
-      background: rgba(10,10,14,0.82);
-      backdrop-filter: blur(24px) saturate(160%);
-      -webkit-backdrop-filter: blur(24px) saturate(160%);
-      border: 1px solid rgba(197,160,89,0.22);
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    "
-    onmouseover="this.style.borderColor='rgba(197,160,89,0.45)';"
-    onmouseout="this.style.borderColor='rgba(197,160,89,0.22)';"
-    onmousedown="this.style.transform='scale(0.96)';"
-    onmouseup="this.style.transform='scale(1)';">
-    <i data-lucide="volume-2" style="width:14px; height:14px; color:#C5A059; flex-shrink:0;"></i>
-    <span id="audio-label" style="font-size:9px; font-weight:700; letter-spacing:0.18em; color:#C5A059; text-transform:uppercase; white-space:nowrap;">MUSIC</span>
-  </button>
-
-  <!-- PREMIUM FLOATING LANGUAGE SELECTOR -->
-  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end select-none" style="font-family:'Plus Jakarta Sans',sans-serif;">
-
-    <!-- Glassmorphism Language Panel (slides upward) -->
-    <div id="language-dropdown"
-         class="lang-dropdown mb-3
-                opacity-0 pointer-events-none translate-y-4 scale-95
-                transition-all duration-350 ease-out"
-         style="transform-origin: bottom right;">
-
-      <!-- Glass Card -->
-      <div style="
-        background: rgba(10, 10, 14, 0.78);
-        backdrop-filter: blur(28px) saturate(180%);
-        -webkit-backdrop-filter: blur(28px) saturate(180%);
-        border: 1px solid rgba(197,160,89,0.18);
-        border-radius: 20px;
-        padding: 14px 12px 12px;
-        width: 148px;
-      ">
-        <!-- Header -->
-        <div style="
-          text-align: center;
-          font-size: 8px;
-          font-weight: 700;
-          letter-spacing: 0.22em;
-          color: rgba(197,160,89,0.55);
-          text-transform: uppercase;
-          margin-bottom: 10px;
-          padding-bottom: 8px;
-          border-bottom: 1px solid rgba(197,160,89,0.12);
-        ">LANGUAGE</div>
-
-        <!-- Language Pills Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
-
-          <button data-lang="eng" class="lang-opt" style="
-            padding: 7px 4px; border-radius: 10px;
-            font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
-            color: #C5A059; background: rgba(197,160,89,0.12);
-            border: 1px solid rgba(197,160,89,0.22);
-            cursor: pointer; transition: all 0.2s ease; text-align: center;">
-            ENG
-          </button>
-
-          <button data-lang="hin" class="lang-opt" style="
-            padding: 7px 4px; border-radius: 10px;
-            font-size: 10px; font-weight: 600;
-            color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            cursor: pointer; transition: all 0.2s ease; text-align: center;">
-            हिन्दी
-          </button>
-
-          <button data-lang="pun" class="lang-opt" style="
-            grid-column: span 2;
-            padding: 7px 4px; border-radius: 10px;
-            font-size: 10px; font-weight: 600;
-            color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            cursor: pointer; transition: all 0.2s ease; text-align: center;">
-            ਪੰਜਾਬੀ
-          </button>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Trigger Button — premium pill matching audio button -->
-    <button id="lang-toggle-btn" aria-label="Select Language"
-            style="
-              display: flex; align-items: center; gap: 8px;
-              padding: 0 16px; height: 42px;
-              background: rgba(10,10,14,0.82);
-              backdrop-filter: blur(24px) saturate(160%);
-              -webkit-backdrop-filter: blur(24px) saturate(160%);
-              border: 1px solid rgba(197,160,89,0.22);
-              border-radius: 999px;
-              font-family: 'Plus Jakarta Sans', sans-serif;
-              font-size: 9px; font-weight: 700;
-              letter-spacing: 0.18em;
-              color: #C5A059;
-              cursor: pointer;
-              transition: all 0.3s ease;
-              white-space: nowrap;
-            "
-            onmouseover="this.style.borderColor='rgba(197,160,89,0.45)';"
-            onmouseout="this.style.borderColor='rgba(197,160,89,0.22)';"
-            onmousedown="this.style.transform='scale(0.96)';"
-            onmouseup="this.style.transform='scale(1)';">
-      <i data-lucide="languages" style="width:14px; height:14px; color:#C5A059; flex-shrink:0;"></i>
-      <span id="lang-label">ENG</span>
-    </button>
-  </div>
-
-  <!-- HERO SECTION - DYNAMIC MOBILE & DESKTOP PERFECT FIT -->
-  <section class="hero-section relative flex flex-col items-center justify-start sm:justify-center pt-8 pb-10 sm:pt-14 sm:pb-16 px-4 sm:px-8 overflow-hidden bg-ivory-100">
-    <!-- Background Image - 100% Full Bleed Edge-to-Edge -->
-    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden hero-bg-anim">
-      <img src="assets/hero-bg(1).webp" alt="Royal Palace Background" class="w-full h-full object-cover object-center" fetchpriority="high" />
-    </div>
-
-    <!-- Main Cohesive Cinematic Content (Shifted down for breathing room) -->
-    <div class="hero-container flex flex-col items-center justify-center max-w-2xl w-full mx-auto z-10 px-2 sm:px-4 text-center mt-12 sm:mt-20 md:mt-24">
-      
-      <!-- Tiny elegant traditional mantra -->
-      <div data-trans="mantra" class="text-[10px] sm:text-[13px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-royal-gold font-serif font-semibold opacity-95 mb-1.5 hero-anim-ganesha">
-        || Shree Ganeshay Namah ||
-      </div>
-
-      <!-- Divider flourish -->
-      <div class="w-12 sm:w-14 h-[1px] bg-royal-gold/45 mb-2.5 sm:mb-4 hero-anim-sub"></div>
-
-      <!-- Elegant Ganesha Crest Box -->
-      <div class="relative mx-auto mb-4 sm:mb-6 hero-anim-ganesha flex items-center justify-center">
-        <!-- Frosted glass card behind crest -->
-        <div class="absolute inset-0 rounded-[28px] pointer-events-none"
-             style="
-               background: rgba(255,255,255,0.18);
-               backdrop-filter: blur(8px) saturate(120%);
-               -webkit-backdrop-filter: blur(8px) saturate(120%);
-               border: 1px solid rgba(255,255,255,0.35);
-               box-shadow: 0 4px 24px rgba(197,160,89,0.08);
-               margin: -12px -16px;
-             "></div>
-
-        <!-- Circular Gold-Framed Ganesha Image (relative z-10 added to prevent glass blur overlap) -->
-        <div class="relative z-10 w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] rounded-full p-1 bg-gradient-to-br from-[#C5A059] via-[#FAF0D7] to-[#C5A059] shadow-luxury transition-transform duration-500 hover:scale-105">
-          <div class="w-full h-full rounded-full overflow-hidden border border-[#C5A059]/30">
-            <img src="assets/ganesha_avatar.webp" alt="Lord Ganesha" class="w-full h-full object-cover object-center" style="transform: scale(1.08);" decoding="async" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Small Editorial Subtitle -->
-      <p data-trans="subtitle" class="text-[12px] sm:text-[15px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-black/85 font-sans font-semibold mb-1.5 sm:mb-3.5 hero-anim-sub">
-        The Wedding Celebration of
-      </p>
-
-      <!-- Large Cinematic Overlapping Couple Names (Luxury Editorial Serif Style - Responsive Scaling) -->
-      <h1 class="font-serif flex flex-col items-center justify-center py-1 sm:py-2 hero-anim-title">
-        <span data-trans="bride" class="hero-title-main font-serif text-5xl sm:text-8xl md:text-9xl font-light tracking-wide text-black leading-none">Srushti</span>
-        <span data-trans="weds" class="hero-title-weds font-cursive text-royal-gold text-4xl sm:text-7xl md:text-8xl font-normal my-[-4px] sm:my-[-6px] tracking-wider transform -rotate-6 z-10">weds</span>
-        <span data-trans="groom" class="hero-title-main font-serif text-5xl sm:text-8xl md:text-9xl font-light tracking-wide text-black leading-none">Amardeep</span>
-      </h1>
-
-    </div>
-  </section>
-
-  <!-- ROMANTIC SCRATCH & REVEAL COUNTDOWN SECTION -->
-  <section id="countdown-section" class="py-12 px-4 sm:px-8 max-w-3xl mx-auto relative z-10 -mt-6 flex flex-col items-center">
+  <div id="custom-cursor-ring" class="custom-cursor-ring"><span id="cursor-text"></span></div>  <!-- HERO SECTION WITH INTEGRATED SCRATCH & REVEAL COUNTDOWN -->
+  <section class="hero-section relative w-full h-[100dvh] min-h-[720px] max-h-[960px] flex items-center justify-center bg-[#0A1118] overflow-hidden">
     
-    <!-- UNIFIED PREMIUM COUNTDOWN CARD CONTAINER (Mobile Friendly & Clean Modern Vibe) -->
-    <div class="w-full max-w-xl rounded-3xl bg-white border border-[#E5E5EA] shadow-luxury p-6 sm:p-8 space-y-6 relative overflow-hidden scroll-reveal">
+    <!-- Full-Bleed Edge-to-Edge Video Background -->
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden hero-bg-anim">
+      <video id="hero-bg-video" autoplay loop muted playsinline poster="assets/hero-bg(1).webp" class="w-full h-full object-cover object-center">
+        <source src="assets/hero-bg.mp4" type="video/mp4" />
+        <img src="assets/hero-bg(1).webp" alt="Royal Palace Background" class="w-full h-full object-cover object-center" />
+      </video>
+    </div>
+
+    <!-- PERFECT UNIFIED OVERLAY CONTAINER (Lifted Higher into Cream Arch - ZERO LEAF OVERLAP, PERFECT ALIGNMENT) -->
+    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center max-w-md w-full mx-auto px-4 text-center pointer-events-auto my-auto -mt-6 sm:-mt-10 py-4 sm:py-6 space-y-2.5 sm:space-y-3.5">
       
-      <!-- Top Date Header -->
-      <div class="text-center space-y-1">
-        <span class="font-sans text-[9px] tracking-[0.3em] text-[#C5A059] font-bold uppercase block">THE CELEBRATION BEGINS</span>
-        <h2 class="font-serif text-3xl font-light text-black tracking-wider leading-snug">Nov 28, 2026</h2>
-        <p class="font-sans text-[10px] tracking-wider text-charcoal-muted uppercase">Saturday • Udaipur, Rajasthan</p>
+      <!-- 1. Ganesha Avatar Medal & Traditional Mantra (Lifted Higher Below Lanterns) -->
+      <div class="flex flex-col items-center">
+        <div class="relative w-[68px] h-[68px] sm:w-[82px] sm:h-[82px] rounded-full p-[2px] bg-gradient-to-tr from-[#B38728] via-[#FBF5B7] to-[#AA771C] shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition-transform duration-500 hover:scale-105">
+          <div class="w-full h-full rounded-full p-[1.5px] bg-[#0C3839]">
+            <div class="w-full h-full rounded-full overflow-hidden border border-[#C5A059]/60 bg-white flex items-center justify-center shadow-inner">
+              <img src="assets/ganesh-ji.jpg" alt="Lord Ganesha" class="w-full h-full object-cover object-center" style="transform: scale(1.58);" decoding="async" />
+            </div>
+          </div>
+        </div>
+
+        <div data-trans="mantra" class="text-[9px] sm:text-[10.5px] uppercase tracking-[0.25em] text-[#C5A059] font-serif font-bold mt-1">
+          || Shree Ganeshay Namah ||
+        </div>
       </div>
 
-      <!-- Clean Thin Divider -->
-      <div class="h-[1px] bg-gray-100 w-full"></div>
+      <!-- 2. Subtitle & Grand Royal Couple Names (Larger, Bolder & Majestic) -->
+      <div class="flex flex-col items-center justify-center w-full">
+        <p data-trans="subtitle" class="font-sans text-[8.5px] sm:text-[10px] uppercase tracking-[0.32em] text-[#164E40] font-bold mb-0.5">
+          THE WEDDING CELEBRATION OF
+        </p>
 
-      <!-- SCRATCH WRAPPER -->
-      <div id="scratch-card-wrapper" class="relative rounded-2xl overflow-hidden bg-[#F9F9FB] p-4 sm:p-6 border border-[#E5E5EA] min-h-[140px] flex items-center justify-center">
-        <!-- SLEEK HORIZONTAL SCRATCH CANVAS -->
-        <canvas id="scratch-canvas" class="absolute inset-0 w-full h-full z-20 cursor-pointer rounded-2xl touch-none transition-opacity duration-700"></canvas>
-        
-        <!-- REVEALED COUNTDOWN TICKER UNDERNEATH -->
-        <div class="relative z-10 grid grid-cols-4 gap-2 sm:gap-4 w-full text-center">
-          <div class="p-3 sm:p-4 rounded-2xl bg-white border border-gray-100 shadow-sm flex flex-col items-center hover:scale-105 transition-transform duration-300">
-            <span id="cnt-days" class="font-sans text-3xl sm:text-4xl font-light text-black tracking-tight">00</span>
-            <span data-trans="days" class="font-sans text-[8px] uppercase tracking-widest text-[#C5A059] font-bold mt-1.5">DAYS</span>
-          </div>
-          <div class="p-3 sm:p-4 rounded-2xl bg-white border border-gray-100 shadow-sm flex flex-col items-center hover:scale-105 transition-transform duration-300">
-            <span id="cnt-hours" class="font-sans text-3xl sm:text-4xl font-light text-black tracking-tight">00</span>
-            <span data-trans="hours" class="font-sans text-[8px] uppercase tracking-widest text-[#C5A059] font-bold mt-1.5">HOURS</span>
-          </div>
-          <div class="p-3 sm:p-4 rounded-2xl bg-white border border-gray-100 shadow-sm flex flex-col items-center hover:scale-105 transition-transform duration-300">
-            <span id="cnt-mins" class="font-sans text-3xl sm:text-4xl font-light text-black tracking-tight">00</span>
-            <span data-trans="mins" class="font-sans text-[8px] uppercase tracking-widest text-[#C5A059] font-bold mt-1.5">MINUTES</span>
-          </div>
-          <div class="p-3 sm:p-4 rounded-2xl bg-white border border-gray-100 shadow-sm flex flex-col items-center hover:scale-105 transition-transform duration-300">
-            <span id="cnt-secs" class="font-sans text-3xl sm:text-4xl font-light text-black tracking-tight">00</span>
-            <span data-trans="secs" class="font-sans text-[8px] uppercase tracking-widest text-[#C5A059] font-bold mt-1.5">SECONDS</span>
+        <!-- Couple Names -->
+        <h1 data-trans="bride" class="font-serif text-5xl sm:text-7xl font-bold tracking-wide text-[#0D3B3E] drop-shadow-md leading-tight">
+          Rhea
+        </h1>
+
+        <div class="flex items-center justify-center gap-2.5 sm:gap-4 my-0.5 w-full">
+          <div class="w-8 sm:w-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]"></div>
+          <span data-trans="weds" class="font-cursive text-[#C5A059] text-2xl sm:text-4xl font-normal tracking-widest transform -rotate-3 drop-shadow-sm px-1">weds</span>
+          <div class="w-8 sm:w-16 h-[1.5px] bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]"></div>
+        </div>
+
+        <h2 data-trans="groom" class="font-serif text-5xl sm:text-7xl font-bold tracking-wide text-[#0D3B3E] drop-shadow-md leading-tight">
+          Devansh
+        </h2>
+      </div>
+
+      <!-- 3. Date & Venue Details -->
+      <div class="flex flex-col items-center w-full">
+        <span data-trans="date" class="font-serif text-xs sm:text-base font-bold tracking-[0.16em] text-[#8A2E40] uppercase drop-shadow-sm">
+          Saturday, November 28, 2026
+        </span>
+        <span data-trans="venue" class="font-sans text-[8px] sm:text-[9.5px] font-bold tracking-[0.2em] text-[#C5A059] uppercase mt-0.5">
+          At The Oberoi Udaivilas, Udaipur
+        </span>
+      </div>
+
+      <!-- 4. INTEGRATED SCRATCH CARD (Narrowed max-w-[270px] - ZERO LEAF OVERLAP) -->
+      <div class="flex flex-col items-center w-full max-w-[270px] sm:max-w-[310px] pt-1">
+        <div id="scratch-card-wrapper" class="relative w-full rounded-2xl overflow-hidden bg-white/95 backdrop-blur-md p-1.5 sm:p-2 border border-[#C5A059]/45 min-h-[90px] flex items-center justify-center shadow-[0_8px_25px_rgba(0,0,0,0.15)] group">
+          
+          <!-- MATTE CHAMPAGNE METALLIC SCRATCH CANVAS OVERLAY -->
+          <canvas id="scratch-canvas" class="absolute inset-0 w-full h-full z-20 cursor-pointer rounded-2xl touch-none transition-opacity duration-700"></canvas>
+          
+          <!-- REVEALED TICKER GRID UNDERNEATH (Perfectly Fitted for 270px Width) -->
+          <div class="relative z-10 grid grid-cols-4 gap-1 sm:gap-2 w-full text-center p-0.5">
+            
+            <!-- Days Tile -->
+            <div class="py-1.5 px-0.5 rounded-lg bg-white/95 border border-[#C5A059]/30 flex flex-col items-center shadow-sm">
+              <span id="cnt-days" class="font-serif text-base sm:text-xl font-bold text-[#0D3B3E] tracking-tight leading-none">00</span>
+              <span data-trans="days" class="font-sans text-[6.5px] sm:text-[7.5px] uppercase tracking-[0.15em] text-[#C5A059] font-bold mt-0.5">DAYS</span>
+            </div>
+
+            <!-- Hours Tile -->
+            <div class="py-1.5 px-0.5 rounded-lg bg-white/95 border border-[#C5A059]/30 flex flex-col items-center shadow-sm">
+              <span id="cnt-hours" class="font-serif text-base sm:text-xl font-bold text-[#0D3B3E] tracking-tight leading-none">00</span>
+              <span data-trans="hours" class="font-sans text-[6.5px] sm:text-[7.5px] uppercase tracking-[0.15em] text-[#C5A059] font-bold mt-0.5">HOURS</span>
+            </div>
+
+            <!-- Mins Tile -->
+            <div class="py-1.5 px-0.5 rounded-lg bg-white/95 border border-[#C5A059]/30 flex flex-col items-center shadow-sm">
+              <span id="cnt-mins" class="font-serif text-base sm:text-xl font-bold text-[#0D3B3E] tracking-tight leading-none">00</span>
+              <span data-trans="mins" class="font-sans text-[6.5px] sm:text-[7.5px] uppercase tracking-[0.15em] text-[#C5A059] font-bold mt-0.5">MINUTES</span>
+            </div>
+
+            <!-- Secs Tile -->
+            <div class="py-1.5 px-0.5 rounded-lg bg-white/95 border border-[#C5A059]/30 flex flex-col items-center shadow-sm">
+              <span id="cnt-secs" class="font-serif text-base sm:text-xl font-bold text-[#8A2E40] tracking-tight leading-none">00</span>
+              <span data-trans="secs" class="font-sans text-[6.5px] sm:text-[7.5px] uppercase tracking-[0.15em] text-[#C5A059] font-bold mt-0.5">SECONDS</span>
+            </div>
+
           </div>
         </div>
       </div>
@@ -303,8 +189,8 @@
     </div>
   </section>
 
-  <!-- COUPLERS PROFILE SECTION (Directly below countdown) -->
-  <section class="py-16 px-4 sm:px-8 bg-[#FAF9F6] relative z-10 border-t border-[#E5E5EA]">
+  <!-- COUPLERS PROFILE SECTION (Directly below Hero Section) -->
+  <section id="couple-section" class="py-16 px-4 sm:px-8 bg-[#FAF9F6] relative z-10 border-t border-[#E5E5EA]">
     <div class="max-w-4xl mx-auto space-y-12 text-center">
       
       <!-- Section Header -->
@@ -319,22 +205,19 @@
         
         <!-- Bride Card -->
         <div class="flex flex-col items-center space-y-4 scroll-reveal">
-          <!-- Premium Floral-Framed Image Wrapper (No outer gold border) -->
+          <!-- Premium Floral-Framed Image Wrapper -->
           <div class="relative max-w-[280px] w-full transition-transform duration-500 hover:scale-[1.02] filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]">
-            <!-- Inner card with transparent overlay frame -->
             <div class="relative aspect-[4/5]">
-              <!-- Bride Image behind (Sized smaller and shaped as an ellipse to prevent any phone subpixel bleeding) -->
               <div class="absolute top-[58px] bottom-[58px] left-[44px] right-[44px] rounded-[50%] overflow-hidden z-0 bg-white">
-                <img src="assets/gallery1.webp" alt="Srushti - The Bride" class="w-full h-full object-cover" style="object-position: center 25%; transform: scale(1.15);" loading="lazy" decoding="async" />
+                <img src="assets/gallery1.webp" alt="Rhea - The Bride" class="w-full h-full object-cover" style="object-position: center 25%; transform: scale(1.15);" loading="lazy" decoding="async" />
               </div>
-              <!-- Floral Frame overlay -->
               <img src="assets/couple-cover.webp" class="absolute inset-0 w-full h-full object-fill z-10 pointer-events-none" loading="lazy" decoding="async" />
             </div>
           </div>
           <!-- Profile Text info -->
           <div class="text-center">
             <span class="font-sans text-[9px] uppercase tracking-[0.25em] text-[#C5A059] font-bold">THE BRIDE</span>
-            <h3 class="font-serif text-3xl font-light text-black mt-1">Srushti</h3>
+            <h3 data-trans="bride" class="font-serif text-3xl font-light text-black mt-1">Rhea</h3>
             <p class="font-serif italic text-xs text-charcoal-muted mt-1 leading-relaxed max-w-[240px]">
               "A beautiful soul ready to embark on an eternal journey of love and togetherness."
             </p>
@@ -343,22 +226,19 @@
 
         <!-- Groom Card -->
         <div class="flex flex-col items-center space-y-4 scroll-reveal">
-          <!-- Premium Floral-Framed Image Wrapper (No outer gold border) -->
+          <!-- Premium Floral-Framed Image Wrapper -->
           <div class="relative max-w-[280px] w-full transition-transform duration-500 hover:scale-[1.02] filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]">
-            <!-- Inner card with transparent overlay frame -->
             <div class="relative aspect-[4/5]">
-              <!-- Groom Image behind (Sized smaller and shaped as an ellipse to prevent any phone subpixel bleeding) -->
               <div class="absolute top-[58px] bottom-[58px] left-[44px] right-[44px] rounded-[50%] overflow-hidden z-0 bg-white">
-                <img src="assets/gallery2.webp" alt="Amardeep - The Groom" class="w-full h-full object-cover" style="object-position: center 15%; transform: scale(1.2);" loading="lazy" decoding="async" />
+                <img src="assets/gallery2.webp" alt="Devansh - The Groom" class="w-full h-full object-cover" style="object-position: center 15%; transform: scale(1.2);" loading="lazy" decoding="async" />
               </div>
-              <!-- Floral Frame overlay -->
               <img src="assets/couple-cover.webp" class="absolute inset-0 w-full h-full object-fill z-10 pointer-events-none" loading="lazy" decoding="async" />
             </div>
           </div>
           <!-- Profile Text info -->
           <div class="text-center">
             <span class="font-sans text-[9px] uppercase tracking-[0.25em] text-[#C5A059] font-bold">THE GROOM</span>
-            <h3 class="font-serif text-3xl font-light text-black mt-1">Amardeep</h3>
+            <h3 data-trans="groom" class="font-serif text-3xl font-light text-black mt-1">Devansh</h3>
             <p class="font-serif italic text-xs text-charcoal-muted mt-1 leading-relaxed max-w-[240px]">
               "Stepping into a new chapter of life with promises of trust, love, and lifelong partnership."
             </p>
@@ -369,181 +249,152 @@
     </div>
   </section>
 
-  <!-- EVENTS SCHEDULE SECTION - MINIMALIST WHITE BACKGROUND WITH CORNER FLOWERS -->
-  <section id="events" class="py-20 px-4 sm:px-8 bg-white relative z-10 border-t border-b border-[#E5E5EA] overflow-hidden">
-    <!-- Corner Floral Decorations -->
-    <img src="assets/flower.webp" alt="" class="absolute top-0 left-0 w-28 sm:w-40 md:w-48 opacity-90 pointer-events-none select-none z-0 transform scale-y-[-1]" loading="lazy" decoding="async" />
-    <img src="assets/flower.webp" alt="" class="absolute bottom-0 right-0 w-28 sm:w-40 md:w-48 opacity-90 pointer-events-none select-none z-0 transform scale-x-[-1]" loading="lazy" decoding="async" />
-    
-    <div class="max-w-4xl mx-auto space-y-12 relative z-10">
+  <!-- EVENTS ITINERARY SECTION (PURE EVENT INVITATION E-CARD POSTER BANNERS) -->
+  <section id="events" class="py-16 px-4 sm:px-8 bg-white relative z-10 border-t border-[#E5E5EA]">
+    <div class="max-w-4xl mx-auto space-y-12 text-center">
       
-      <!-- Section Title Header with Soft Medium Cursive Calligraphy Font -->
-      <div class="text-center space-y-2 scroll-reveal">
+      <!-- Section Header (Matches Bride & Groom Section Header) -->
+      <div class="space-y-2 scroll-reveal">
         <span class="font-sans text-[10px] tracking-[0.3em] text-[#C5A059] font-bold uppercase block">THE ITINERARY</span>
         <h2 data-trans="eventsTitle" class="font-cursive text-5xl sm:text-6xl text-black font-medium tracking-wide">Sacred Ceremonies</h2>
         <div class="w-12 h-[1px] bg-royal-gold/45 mx-auto mt-2"></div>
       </div>
 
-      <!-- Staggered Timeline Layout of 5 Traditional Wedding Cards -->
-      <div class="relative flex flex-col gap-6 md:gap-12 py-4">
-        <!-- Central vertical timeline line (Visible on all viewports) -->
-        <div class="absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-[1px] bg-royal-gold/25 z-0"></div>
+      <!-- Pure Event Invitation Poster Image Cards (All event text integrated INSIDE the image card!) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-3xl mx-auto">
         
-        <!-- 1. Paath Bithai & Ganesh Pujan (Left Side) -->
-        <div class="relative w-[45%] self-start rounded-2xl bg-gradient-to-b from-white to-[#FCFBF7] border border-[#FAF0D7] shadow-[0_10px_35px_rgba(197,160,89,0.07)] hover:scale-[1.02] hover:border-[#C5A059]/60 hover:shadow-[0_20px_45px_rgba(197,160,89,0.14)] transition-all duration-300 p-3.5 sm:p-6 md:p-8 scroll-reveal z-10">
-          <!-- Desktop & Mobile Timeline Center Node -->
-          <div class="absolute top-1/2 -translate-y-1/2 right-[-18px] md:right-[-24px] w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-royal-gold border border-white z-20"></div>
-
-          <div class="space-y-2 md:space-y-3">
-            <!-- Event Badge Index -->
-            <div class="flex items-center gap-2">
-              <span class="font-sans text-[7.5px] sm:text-[8px] uppercase tracking-[0.2em] text-royal-gold font-bold">✦ SHUBH AARAMBH ✦</span>
+        <!-- Event Card 1 Image Poster: Paath Bithai -->
+        <div class="group relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border-2 border-[#C5A059]/40 scroll-reveal transition-transform duration-500 hover:scale-[1.02]">
+          <img src="assets/gallery3.webp" alt="Paath Bithai & Ganesh Pujan" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 p-6 flex flex-col justify-between text-white text-center sm:text-left">
+            <!-- Top Tag -->
+            <div class="flex items-center justify-between">
+              <span class="bg-[#0D3B3E]/90 backdrop-blur-md text-[#C5A059] text-[9px] font-sans font-bold tracking-[0.25em] uppercase py-1 px-3 rounded-full border border-[#C5A059]/40">
+                ✦ SHUBH AARAMBH • DAY 01
+              </span>
+              <span class="text-xl">🪔</span>
             </div>
-            <!-- Event Title -->
-            <h3 class="font-serif text-base sm:text-lg md:text-2xl font-light text-black tracking-wide leading-tight">Paath Bithai</h3>
-            <!-- Event Subtitle/Quote -->
-            <p class="font-serif italic text-[10px] sm:text-xs text-charcoal-muted leading-relaxed mt-0.5">A sacred prayer to invoke Sri Ganesh ji's blessings to begin our wedding journey.</p>
             
-            <div class="h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent my-2 md:my-3"></div>
-            
-            <!-- Details Row (Ticket Style) -->
-            <div class="space-y-1 text-[9px] sm:text-xs text-charcoal/80 font-sans tracking-wide">
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHEN</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs">Nov 27 • 10:00 AM</span>
-              </div>
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHERE</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs truncate max-w-[70%]">Home</span>
+            <!-- Bottom Integrated Details Overlay -->
+            <div class="space-y-2">
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight drop-shadow-md">Paath Bithai &amp; Ganesh Pujan</h3>
+              <p class="font-serif italic text-xs text-white/80 line-clamp-2 leading-relaxed">
+                "A sacred prayer to invoke Sri Ganesh ji's divine blessings to begin our wedding journey."
+              </p>
+              <div class="pt-2 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between text-[11px] font-sans text-[#FBF5B7] gap-1">
+                <span>🗓️ Friday, Nov 27 • 10:00 AM</span>
+                <span>📍 Home Sanctuary, Udaipur</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 2. Haldi & Mehndi Ceremony (Right Side) -->
-        <div class="relative w-[45%] self-end rounded-2xl bg-gradient-to-b from-white to-[#FCFBF7] border border-[#FAF0D7] shadow-[0_10px_35px_rgba(197,160,89,0.07)] hover:scale-[1.02] hover:border-[#C5A059]/60 hover:shadow-[0_20px_45px_rgba(197,160,89,0.14)] transition-all duration-300 p-3.5 sm:p-6 md:p-8 scroll-reveal z-10">
-          <!-- Desktop & Mobile Timeline Center Node -->
-          <div class="absolute top-1/2 -translate-y-1/2 left-[-18px] md:left-[-24px] w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-royal-gold border border-white z-20"></div>
-
-          <div class="space-y-2 md:space-y-3">
-            <!-- Event Badge Index -->
-            <div class="flex items-center gap-2">
-              <span class="font-sans text-[7.5px] sm:text-[8px] uppercase tracking-[0.2em] text-royal-gold font-bold">✦ HALDI &amp; MEHNDI RASAM ✦</span>
+        <!-- Event Card 2 Image Poster: Haldi & Mehndi -->
+        <div class="group relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border-2 border-[#C5A059]/40 scroll-reveal transition-transform duration-500 hover:scale-[1.02]">
+          <img src="assets/gallery1.webp" alt="Haldi & Mehndi Ceremony" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 p-6 flex flex-col justify-between text-white text-center sm:text-left">
+            <!-- Top Tag -->
+            <div class="flex items-center justify-between">
+              <span class="bg-[#0D3B3E]/90 backdrop-blur-md text-[#C5A059] text-[9px] font-sans font-bold tracking-[0.25em] uppercase py-1 px-3 rounded-full border border-[#C5A059]/40">
+                ✦ RANG-E-MEHNDI • DAY 01
+              </span>
+              <span class="text-xl">🌿</span>
             </div>
-            <!-- Event Title -->
-            <h3 class="font-serif text-base sm:text-lg md:text-2xl font-light text-black tracking-wide leading-tight">Haldi &amp; Mehndi Ceremony</h3>
-            <!-- Event Subtitle/Quote -->
-            <p class="font-serif italic text-[10px] sm:text-xs text-charcoal-muted leading-relaxed mt-0.5">Traditional turmeric paste ceremony followed by beautiful bridal henna designs.</p>
             
-            <div class="h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent my-2 md:my-3"></div>
-            
-            <!-- Details Row (Ticket Style) -->
-            <div class="space-y-1 text-[9px] sm:text-xs text-charcoal/80 font-sans tracking-wide">
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHEN</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs">Nov 27 • 02:00 PM</span>
-              </div>
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHERE</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs truncate max-w-[70%]">Home</span>
+            <!-- Bottom Integrated Details Overlay -->
+            <div class="space-y-2">
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight drop-shadow-md">Haldi &amp; Mehndi Ceremony</h3>
+              <p class="font-serif italic text-xs text-white/80 line-clamp-2 leading-relaxed">
+                "Traditional turmeric paste ceremony followed by vibrant henna floral artistry."
+              </p>
+              <div class="pt-2 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between text-[11px] font-sans text-[#FBF5B7] gap-1">
+                <span>🗓️ Friday, Nov 27 • 02:00 PM</span>
+                <span>📍 Royal Courtyard, Udaipur</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 3. Sundowner Sangeet (Left Side) -->
-        <div class="relative w-[45%] self-start rounded-2xl bg-gradient-to-b from-white to-[#FCFBF7] border border-[#FAF0D7] shadow-[0_10px_35px_rgba(197,160,89,0.07)] hover:scale-[1.02] hover:border-[#C5A059]/60 hover:shadow-[0_20px_45px_rgba(197,160,89,0.14)] transition-all duration-300 p-3.5 sm:p-6 md:p-8 scroll-reveal z-10">
-          <!-- Desktop & Mobile Timeline Center Node -->
-          <div class="absolute top-1/2 -translate-y-1/2 right-[-18px] md:right-[-24px] w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-royal-gold border border-white z-20"></div>
-
-          <div class="space-y-2 md:space-y-3">
-            <!-- Event Badge Index -->
-            <div class="flex items-center gap-2">
-              <span class="font-sans text-[7.5px] sm:text-[8px] uppercase tracking-[0.2em] text-royal-gold font-bold">✦ GEET &amp; SANGEET ✦</span>
+        <!-- Event Card 3 Image Poster: Sangeet & Ring Exchange -->
+        <div class="group relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border-2 border-[#C5A059]/40 scroll-reveal transition-transform duration-500 hover:scale-[1.02]">
+          <img src="assets/gallery4.webp" alt="Sangeet & Ring Exchange" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 p-6 flex flex-col justify-between text-white text-center sm:text-left">
+            <!-- Top Tag -->
+            <div class="flex items-center justify-between">
+              <span class="bg-[#0D3B3E]/90 backdrop-blur-md text-[#C5A059] text-[9px] font-sans font-bold tracking-[0.25em] uppercase py-1 px-3 rounded-full border border-[#C5A059]/40">
+                ✦ GEET &amp; SANGEET • DAY 01
+              </span>
+              <span class="text-xl">🪩</span>
             </div>
-            <!-- Event Title -->
-            <h3 class="font-serif text-base sm:text-lg md:text-2xl font-light text-black tracking-wide leading-tight">Sangeet &amp; Ring Ceremony</h3>
-            <!-- Event Subtitle/Quote -->
-            <p class="font-serif italic text-[10px] sm:text-xs text-charcoal-muted leading-relaxed mt-0.5">An evening of dance, music, and celebration as the couple exchanges rings under the stars.</p>
             
-            <div class="h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent my-2 md:my-3"></div>
-            
-            <!-- Details Row (Ticket Style) -->
-            <div class="space-y-1 text-[9px] sm:text-xs text-charcoal/80 font-sans tracking-wide">
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHEN</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs">Nov 27 • 07:00 PM</span>
-              </div>
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHERE</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs truncate max-w-[70%]">Home</span>
+            <!-- Bottom Integrated Details Overlay -->
+            <div class="space-y-2">
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight drop-shadow-md">Sangeet &amp; Ring Exchange</h3>
+              <p class="font-serif italic text-xs text-white/80 line-clamp-2 leading-relaxed">
+                "An enchanting evening of music, dance performances, and ring exchange under starry skies."
+              </p>
+              <div class="pt-2 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between text-[11px] font-sans text-[#FBF5B7] gap-1">
+                <span>🗓️ Friday, Nov 27 • 07:00 PM</span>
+                <span>📍 Grand Ballroom, Udaipur</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 4. Baarat Swagat (Right Side) -->
-        <div class="relative w-[45%] self-end rounded-2xl bg-gradient-to-b from-white to-[#FCFBF7] border border-[#FAF0D7] shadow-[0_10px_35px_rgba(197,160,89,0.07)] hover:scale-[1.02] hover:border-[#C5A059]/60 hover:shadow-[0_20px_45px_rgba(197,160,89,0.14)] transition-all duration-300 p-3.5 sm:p-6 md:p-8 scroll-reveal z-10">
-          <!-- Desktop & Mobile Timeline Center Node -->
-          <div class="absolute top-1/2 -translate-y-1/2 left-[-18px] md:left-[-24px] w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-royal-gold border border-white z-20"></div>
-
-          <div class="space-y-2 md:space-y-3">
-            <!-- Event Badge Index -->
-            <div class="flex items-center gap-2">
-              <span class="font-sans text-[7.5px] sm:text-[8px] uppercase tracking-[0.2em] text-royal-gold font-bold">✦ BARAAT SWAGAT &amp; MILNI ✦</span>
+        <!-- Event Card 4 Image Poster: Baraat Swagat & Milni -->
+        <div class="group relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border-2 border-[#C5A059]/40 scroll-reveal transition-transform duration-500 hover:scale-[1.02]">
+          <img src="assets/gallery5.webp" alt="Baraat Swagat & Milni" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 p-6 flex flex-col justify-between text-white text-center sm:text-left">
+            <!-- Top Tag -->
+            <div class="flex items-center justify-between">
+              <span class="bg-[#0D3B3E]/90 backdrop-blur-md text-[#C5A059] text-[9px] font-sans font-bold tracking-[0.25em] uppercase py-1 px-3 rounded-full border border-[#C5A059]/40">
+                ✦ BARAAT SWAGAT • DAY 02
+              </span>
+              <span class="text-xl">🎺</span>
             </div>
-            <!-- Event Title -->
-            <h3 class="font-serif text-base sm:text-lg md:text-2xl font-light text-black tracking-wide leading-tight">Baraat Swagat &amp; Milni</h3>
-            <!-- Event Subtitle/Quote -->
-            <p class="font-serif italic text-[10px] sm:text-xs text-charcoal-muted leading-relaxed mt-0.5">Receiving the groom's grand procession with traditional garlands and warm milni greetings.</p>
             
-            <div class="h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent my-2 md:my-3"></div>
-            
-            <!-- Details Row (Ticket Style) -->
-            <div class="space-y-1 text-[9px] sm:text-xs text-charcoal/80 font-sans tracking-wide">
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHEN</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs">Nov 28 • 04:30 PM</span>
-              </div>
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHERE</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs truncate max-w-[70%]">Home</span>
+            <!-- Bottom Integrated Details Overlay -->
+            <div class="space-y-2">
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight drop-shadow-md">Baraat Swagat &amp; Milni</h3>
+              <p class="font-serif italic text-xs text-white/80 line-clamp-2 leading-relaxed">
+                "Receiving Devansh's grand royal procession with dhol beats, rose showers, and warm milni."
+              </p>
+              <div class="pt-2 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between text-[11px] font-sans text-[#FBF5B7] gap-1">
+                <span>🗓️ Sat, Nov 28 • 04:30 PM</span>
+                <span>📍 Palace Gateway, Oberoi Udaivilas</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 5. The Royal Pheras (Left Side) -->
-        <div class="relative w-[45%] self-start rounded-2xl bg-gradient-to-b from-white to-[#FCFBF7] border border-[#FAF0D7] shadow-[0_10px_35px_rgba(197,160,89,0.07)] hover:scale-[1.02] hover:border-[#C5A059]/60 hover:shadow-[0_20px_45px_rgba(197,160,89,0.14)] transition-all duration-300 p-3.5 sm:p-6 md:p-8 scroll-reveal z-10">
-          <!-- Desktop & Mobile Timeline Center Node -->
-          <div class="absolute top-1/2 -translate-y-1/2 right-[-18px] md:right-[-24px] w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-royal-gold border border-white z-20"></div>
-
-          <div class="space-y-2 md:space-y-3">
-            <!-- Event Badge Index -->
-            <div class="flex items-center gap-2">
-              <span class="font-sans text-[7.5px] sm:text-[8px] uppercase tracking-[0.2em] text-royal-gold font-bold">✦ SHUBH VIVAH ✦</span>
+        <!-- Event Card 5 Image Poster: Shahi Phere & Vivah (Full Width on Desktop) -->
+        <div class="group md:col-span-2 relative aspect-[16/9] rounded-3xl overflow-hidden shadow-lg border-2 border-[#C5A059]/40 scroll-reveal transition-transform duration-500 hover:scale-[1.02]">
+          <img src="assets/gallery2.webp" alt="Shahi Phere & Hastamelap" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 p-6 sm:p-8 flex flex-col justify-between text-white text-center sm:text-left">
+            <!-- Top Tag -->
+            <div class="flex items-center justify-between">
+              <span class="bg-[#0D3B3E]/90 backdrop-blur-md text-[#C5A059] text-[9px] font-sans font-bold tracking-[0.25em] uppercase py-1 px-3 rounded-full border border-[#C5A059]/40">
+                ✦ SHUBH VIVAH • DAY 02
+              </span>
+              <span class="text-xl">🔥</span>
             </div>
-            <!-- Event Title -->
-            <h3 class="font-serif text-base sm:text-lg md:text-2xl font-light text-black tracking-wide leading-tight">Anand Karaj &amp; Pheras</h3>
-            <!-- Event Subtitle/Quote -->
-            <p class="font-serif italic text-[10px] sm:text-xs text-charcoal-muted leading-relaxed mt-0.5">The sacred wedding union and taking the holy vows around the sacred fire.</p>
             
-            <div class="h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent my-2 md:my-3"></div>
-            
-            <!-- Details Row (Ticket Style) -->
-            <div class="space-y-1 text-[9px] sm:text-xs text-charcoal/80 font-sans tracking-wide">
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHEN</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs">Nov 28 • 07:00 PM</span>
-              </div>
-              <div class="flex items-center justify-between gap-1">
-                <span class="text-[7px] uppercase tracking-wider text-royal-gold font-bold">WHERE</span>
-                <span class="font-medium text-black text-[10px] sm:text-xs truncate max-w-[70%]">Lakeside Mandap</span>
+            <!-- Bottom Integrated Details Overlay -->
+            <div class="space-y-2 max-w-xl">
+              <h3 class="font-serif text-2xl sm:text-4xl font-bold text-white tracking-tight drop-shadow-md">Shahi Phere &amp; Hastamelap</h3>
+              <p class="font-serif italic text-xs sm:text-sm text-white/80 leading-relaxed">
+                "Taking sacred wedding vows around the holy agni to unite Rhea &amp; Devansh for seven lifetimes."
+              </p>
+              <div class="pt-3 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between text-xs font-sans text-[#FBF5B7] gap-1">
+                <span class="font-bold">🗓️ Saturday, Nov 28, 2026 • 07:00 PM</span>
+                <span>📍 Royal Lake Pavilion, Oberoi Udaivilas</span>
               </div>
             </div>
           </div>
         </div>
+
       </div>
+
     </div>
   </section>
 

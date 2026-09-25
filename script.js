@@ -69,6 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trigger hero content micro-motion reveal
     document.body.classList.add('is-revealed');
 
+    // Ensure hero background video starts playing
+    const heroBgVideo = document.getElementById('hero-bg-video');
+    if (heroBgVideo) {
+      heroBgVideo.play().catch(err => {
+        console.log('Hero background video play notice:', err);
+      });
+    }
+
     // Hide door overlay after smooth 2.0s transition completes
     setTimeout(() => {
       doorOverlay.style.display = 'none';
@@ -140,32 +148,32 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.globalCompositeOperation = 'source-over';
       ctx.clearRect(0, 0, w, h);
 
-      // Iridescent Rose-Gold Diagonal Metallic Foil Gradient (Dynamic Tactile Feel)
+      // Sleek Matte Champagne Silk Gradient
       const cardGrad = ctx.createLinearGradient(0, 0, w, h);
-      cardGrad.addColorStop(0, '#F5D6C6');
-      cardGrad.addColorStop(0.22, '#FFF0E5');
-      cardGrad.addColorStop(0.48, '#E2B39E');
-      cardGrad.addColorStop(0.74, '#FFF9F6');
-      cardGrad.addColorStop(1, '#C59F89');
+      cardGrad.addColorStop(0, '#FAF5E8');
+      cardGrad.addColorStop(0.3, '#FFFDF7');
+      cardGrad.addColorStop(0.65, '#F3E8D0');
+      cardGrad.addColorStop(1, '#EADAB8');
 
       ctx.fillStyle = cardGrad;
       ctx.fillRect(0, 0, w, h);
 
-      // Soft white inner border for card dimensioning
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
-      ctx.lineWidth = 1.5;
-      ctx.strokeRect(10, 10, w - 20, h - 20);
+      // Sleek 1px Champagne Gold Inner Border Line
+      ctx.strokeStyle = 'rgba(197, 160, 89, 0.4)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(6, 6, w - 12, h - 12);
 
-      // Contemporary spaced-out uppercase sans-serif text
-      ctx.fillStyle = '#2A2022';
+      // Clean Minimalist Editorial Text
+      const cx = w / 2;
+      const cy = h / 2;
+      const fontSize = Math.min(Math.max(w / 28, 11), 13);
+      ctx.fillStyle = '#0D3B3E';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      
-      const fontSize = Math.min(Math.max(w / 26, 11), 13);
-      ctx.font = `500 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
-      ctx.shadowColor = 'rgba(255, 255, 255, 0.85)';
-      ctx.shadowBlur = 3;
-      ctx.fillText('✦   U N V E I L   T H E   C O U N T D O W N   ✦', w / 2, h / 2);
+      ctx.font = `600 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+      ctx.shadowBlur = 2;
+      ctx.fillText('✦   S C R A T C H   T O   R E V E A L   ✦', cx, cy);
       ctx.shadowColor = 'transparent';
     }
 
@@ -258,6 +266,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Fade out scratch overlay smoothly
       scratchCanvas.style.opacity = '0';
 
+      const guideTag = document.getElementById('scratch-guide-tag');
+      if (guideTag) guideTag.style.display = 'none';
+
       // PARTY POPPER FLOWER EXPLOSION!
       triggerPartyPopperExplosion();
 
@@ -281,6 +292,63 @@ document.addEventListener('DOMContentLoaded', () => {
     scratchCanvas.addEventListener('touchmove', scratch, { passive: false });
     window.addEventListener('touchend', () => { isScratching = false; });
   }
+
+  // Interactive Event Day Filtering Function
+  window.filterEventCards = function(day) {
+    const cards = document.querySelectorAll('.ev-card');
+    const btnAll = document.getElementById('btn-ev-all');
+    const btnDay1 = document.getElementById('btn-ev-day1');
+    const btnDay2 = document.getElementById('btn-ev-day2');
+
+    // Reset button styles
+    [btnAll, btnDay1, btnDay2].forEach(btn => {
+      if (btn) {
+        btn.className = "px-5 py-2 rounded-full text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 bg-white text-[#0D3B3E] border border-[#C5A059]/40 hover:bg-[#FAF0D7] hover:scale-105";
+      }
+    });
+
+    if (day === 'all') {
+      if (btnAll) btnAll.className = "px-5 py-2 rounded-full text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 bg-[#0D3B3E] text-white shadow-md hover:scale-105";
+      cards.forEach(card => card.style.display = 'block');
+    } else if (day === 'day1') {
+      if (btnDay1) btnDay1.className = "px-5 py-2 rounded-full text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 bg-[#0D3B3E] text-white shadow-md hover:scale-105";
+      cards.forEach(card => {
+        if (card.classList.contains('ev-day1')) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    } else if (day === 'day2') {
+      if (btnDay2) btnDay2.className = "px-5 py-2 rounded-full text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 bg-[#0D3B3E] text-white shadow-md hover:scale-105";
+      cards.forEach(card => {
+        if (card.classList.contains('ev-day2')) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  };
+
+  // Toast Notification Helper
+  window.showToast = function(msg) {
+    let toast = document.getElementById('custom-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'custom-toast';
+      toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#0D3B3E] text-white text-xs font-sans font-bold px-6 py-3 rounded-full shadow-2xl z-50 transition-all duration-300 opacity-0 transform translate-y-4 border border-[#C5A059]';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = '✨ ' + msg;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translate(-50%, 0)';
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translate(-50%, 1rem)';
+    }, 3000);
+  };
 
   // 4. 60FPS PETALS CANVAS SIMULATION (FLOWER IMAGES)
   const canvas = document.getElementById('petals-canvas');
@@ -533,8 +601,8 @@ document.addEventListener('DOMContentLoaded', () => {
     eng: {
       mantra: "|| Shree Ganeshay Namah ||",
       subtitle: "The Wedding Celebration of",
-      groom: "Amardeep",
-      bride: "Srushti",
+      groom: "Devansh",
+      bride: "Rhea",
       weds: "weds",
       date: "Saturday, November 28, 2026",
       venue: "at The Oberoi Udaivilas, Udaipur",
@@ -558,8 +626,8 @@ document.addEventListener('DOMContentLoaded', () => {
     hin: {
       mantra: "|| श्री गणेशाय नमः ||",
       subtitle: "के पावन विवाह समारोह",
-      groom: "अमरदीप",
-      bride: "सृष्टि",
+      groom: "देवांश",
+      bride: "रिया",
       weds: "संग",
       date: "शनिवार, 28 नवंबर 2026",
       venue: "द ओबेरॉय उदयविलास, उदयपुर में",

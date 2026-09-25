@@ -13,13 +13,21 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ENVELOPE ENTRANCE OVERLAY SYSTEM */
+/* ENVELOPE ENTRANCE OVERLAY SYSTEM - ZERO DEAD SPACE 100% VIEWPORT FIT */
 .door-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background-color: #FFF5F6;
-  overflow: hidden;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: 1000 !important;
+  background-color: #73836B !important; /* Sage green background to seamlessly match envelope video */
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
   user-select: none;
   display: flex;
   flex-direction: column;
@@ -27,6 +35,21 @@ html {
   justify-content: center;
   visibility: visible;
   opacity: 1;
+}
+
+#envelope-video {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-width: 100vw !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  object-fit: cover !important;
+  object-position: center !important;
 }
 
 .door-overlay.is-opened {
@@ -192,8 +215,16 @@ html {
 }
 
 .hero-bg-anim {
-  transform: scale(1.1);
+  transform: scale(1.05);
   transition: transform 3.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s ease;
+}
+
+.hero-bg-anim video,
+.hero-bg-anim img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* WHEN DOOR OPENS - STAGGERED MOTION REVEAL */
