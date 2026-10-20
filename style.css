@@ -428,3 +428,43 @@ body.is-revealed .hero-anim-btn {
   }
 }
 
+/* Event Invitation Card Floating Petals & Animations */
+@keyframes floatPetalSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) rotate(16deg) scale(1.05);
+  }
+}
+
+@keyframes floatPetalMid {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-18px) rotate(-18deg) scale(0.95);
+  }
+}
+
+@keyframes floatPetalFast {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-22px) rotate(24deg) scale(1.1);
+  }
+}
+
+.animate-float-slow {
+  animation: floatPetalSlow 5s ease-in-out infinite;
+}
+
+.animate-float-mid {
+  animation: floatPetalMid 4.2s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: floatPetalFast 3.4s ease-in-out infinite;
+}
+

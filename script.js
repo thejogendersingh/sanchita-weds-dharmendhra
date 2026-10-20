@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 2. LIVE COUNTDOWN TIMER
-  const destination = new Date('2026-11-28T16:00:00').getTime();
+  const destination = new Date('2026-12-01T13:30:00').getTime();
 
   function updateCountdown() {
     const now = new Date().getTime();
@@ -601,24 +601,24 @@ document.addEventListener('DOMContentLoaded', () => {
     eng: {
       mantra: "|| Shree Ganeshay Namah ||",
       subtitle: "The Wedding Celebration of",
-      groom: "Devansh",
-      bride: "Rhea",
+      groom: "Dharmendra",
+      bride: "Sanchita",
       weds: "weds",
-      date: "Saturday, November 28, 2026",
-      venue: "at The Oberoi Udaivilas, Udaipur",
+      date: "1st & 2nd December 2026",
+      venue: "at Prasang Lawn",
       countdownTitle: "SAVE THE DATE",
       days: "DAYS",
       hours: "HOURS",
       mins: "MINUTES",
       secs: "SECONDS",
-      eventsTitle: "Events Schedule",
+      eventsTitle: "Sacred Ceremonies",
       hostsTitle: "With Blessings",
       hostsSub: "WITH THE BLESSINGS OF OUR ELDERS",
       hostsWelcomed: "Warmly Welcomed By",
       hostsFamilies: "The Families",
       hostsGroomSide: "Groom's Family",
       hostsBrideSide: "Bride's Family",
-      hostsBottomNote: '"Kindly join us to celebrate the auspicious Anand Karaj of our children."',
+      hostsBottomNote: '"Kindly join us to celebrate the auspicious wedding ceremonies of our beloved Sanchita."',
       venueTitle: "Where We Celebrate",
       directionsBtn: "Get Directions",
       footerText: "WITH LOVE & BLESSINGS"
@@ -626,11 +626,11 @@ document.addEventListener('DOMContentLoaded', () => {
     hin: {
       mantra: "|| श्री गणेशाय नमः ||",
       subtitle: "के पावन विवाह समारोह",
-      groom: "देवांश",
-      bride: "रिया",
+      groom: "धर्मेंद्र",
+      bride: "संचिता",
       weds: "संग",
-      date: "शनिवार, 28 नवंबर 2026",
-      venue: "द ओबेरॉय उदयविलास, उदयपुर में",
+      date: "1 - 2 दिसंबर 2026",
+      venue: "प्रसंग लॉन",
       countdownTitle: "शुभ विवाह तिथि",
       days: "दिन",
       hours: "घंटे",
@@ -643,7 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsFamilies: "परिवार",
       hostsGroomSide: "वर पक्ष",
       hostsBrideSide: "वधू पक्ष",
-      hostsBottomNote: '"हमारे बच्चों के आनंद कारज के शुभ अवसर पर आपका सादर निमंत्रण है।"',
+      hostsBottomNote: '"हमारी लाडली संचिता के पावन विवाह समारोह में आपका सादर निमंत्रण है।"',
       venueTitle: "उत्सव स्थल",
       directionsBtn: "दिशा-निर्देश",
       footerText: "स्नेह एवं आदर सहित"
@@ -651,11 +651,11 @@ document.addEventListener('DOMContentLoaded', () => {
     pun: {
       mantra: "|| ੴ ਸ੍ਰੀ ਗਣੇਸ਼ਾਏ ਨਮਹ ||",
       subtitle: "ਦੇ ਪਵਿੱਤਰ ਵਿਆਹ ਸਮਾਗਮ",
-      groom: "ਅਮਰਦੀਪ",
-      bride: "ਸ੍ਰਿਸ਼ਟੀ",
+      groom: "ਧਰਮਿੰਦਰ",
+      bride: "ਸੰਚਿਤਾ",
       weds: "ਸੰਗ",
-      date: "ਸ਼ਨੀਵਾਰ, 28 ਨਵੰਬਰ 2026",
-      venue: "ਦ ਓਬਰਾਏ ਉਦੈਵਿਲਾਸ, ਉਦੈਪੁਰ ਵਿਖੇ",
+      date: "1 - 2 ਦਸੰਬਰ 2026",
+      venue: "ਪ੍ਰਸੰਗ ਲੌਨ ਵਿਖੇ",
       countdownTitle: "ਸ਼ੁਭ ਵਿਆਹ ਦੀ ਤਾਰੀਖ",
       days: "ਦਿਨ",
       hours: "ਘੰਟੇ",
@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsFamilies: "ਪਰਿਵਾਰ",
       hostsGroomSide: "ਲੜਕੇ ਵਾਲੇ",
       hostsBrideSide: "ਲੜਕੀ ਵਾਲੇ",
-      hostsBottomNote: '"ਸਾਡੇ ਬੱਚਿਆਂ ਦੇ ਅਨੰਦ ਕਾਰਜ ਦੇ ਸ਼ੁਭ ਅਵਸਰ \'ਤੇ ਤੁਹਾਡੀ ਹਾਜ਼ਰੀ ਦੀ ਮੰਗ ਕਰਦੇ ਹਾਂ।"',
+      hostsBottomNote: '"ਸਾਡੀ ਬੱਚੀ ਸੰਚਿਤਾ ਦੇ ਸ਼ੁਭ ਵਿਆਹ ਸਮਾਗਮ ਵਿੱਚ ਤੁਹਾਡੀ ਹਾਜ਼ਰੀ ਦੀ ਮੰਗ ਕਰਦੇ ਹਾਂ।"',
       venueTitle: "ਵਿਆਹ ਦਾ ਸਥਾਨ",
       directionsBtn: "ਦਿਸ਼ਾ-ਨਿਰਦੇਸ਼",
       footerText: "ਪਿਆਰ ਅਤੇ ਸਤਿਕਾਰ ਸਹਿਤ"
@@ -676,11 +676,11 @@ document.addEventListener('DOMContentLoaded', () => {
     mar: {
       mantra: "|| श्री गणेशाय नमः ||",
       subtitle: "यांच्या शुभ विवाह सोहळ्यात",
-      groom: "अमरदीप",
-      bride: "सृष्टी",
+      groom: "धर्मेंद्र",
+      bride: "संचिता",
       weds: "विवाह करतात",
-      date: "शनिवार, २८ नोव्हेंबर २०२६",
-      venue: "द ओबेरॉय उदयविलास, उदयपूर येथे",
+      date: "1 - 2 डिसेंबर 2026",
+      venue: "प्रसंग लॉन",
       countdownTitle: "शुभ विवाह तिथी",
       days: "दिवस",
       hours: "तास",
@@ -693,7 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsFamilies: "कुटुंब",
       hostsGroomSide: "वर पक्ष",
       hostsBrideSide: "वधू पक्ष",
-      hostsBottomNote: '"आमच्या मुलांच्या शुभ विवाह सोहळ्यात आपल्या उपस्थितीसाठी नम्र विनंती आहे."',
+      hostsBottomNote: '"आमच्या लाडकी संचिताच्या शुभ विवाह सोहळ्यात आपल्या उपस्थितीसाठी नम्र विनंती आहे."',
       venueTitle: "उत्सव स्थळ",
       directionsBtn: "દિશાનિર્દેશ",
       footerText: "प्रेम व शुभेच्छांसह"
@@ -701,11 +701,11 @@ document.addEventListener('DOMContentLoaded', () => {
     guj: {
       mantra: "|| શ્રી ગણેશાય નમઃ ||",
       subtitle: "ના પવિત્ર વિવાહ સમારોહ",
-      groom: "અમરદીપ",
-      bride: "સૃષ્ટિ",
+      groom: "ધર્મેન્દ્ર",
+      bride: "સંચિતા",
       weds: "સાથે",
-      date: "શનિવાર, ૨૮ નવેમ્બર ૨૦૨૬",
-      venue: "ધ ઓબેરોઈ ઉદય વિલાસ, ઉદયપુર ખાતે",
+      date: "1 - 2 ડિસેમ્બર 2026",
+      venue: "પ્રસંગ લૉન ખાતે",
       countdownTitle: "શુભ વિવાહ તિથિ",
       days: "દિવસ",
       hours: "કલાક",
@@ -718,7 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsFamilies: "પરિવાર",
       hostsGroomSide: "વર પક્ષ",
       hostsBrideSide: "વધૂ પક્ષ",
-      hostsBottomNote: '"અમારા સંતાનના આનંદ કારજ પ્રસંગે આપની ઉપસ્થિતિ ઈચ્છીએ છીએ."',
+      hostsBottomNote: '"અમારી દીકરી સંચિતાના લગ્ન પ્રસંગે આપની ઉપસ્થિતિ ઈચ્છીએ છીએ."',
       venueTitle: "ઉત્સવ સ્થળ",
       directionsBtn: "દિશા-નિર્દેશ",
       footerText: "પ્રેમ અને શ્રદ્ધા સહ"
@@ -726,11 +726,11 @@ document.addEventListener('DOMContentLoaded', () => {
     tam: {
       mantra: "|| ஸ்ரீ கணேசாய நமஹ ||",
       subtitle: "திருமண விழாவில்",
-      groom: "அமர்தீப்",
-      bride: "சிருஷ்டி",
+      groom: "தர்மேந்திரா",
+      bride: "சஞ்சிதா",
       weds: "மணக்கிறார்",
-      date: "சனிக்கிழமை, நவம்பர் 28, 2026",
-      venue: "த ஓபரா உதய்விலாஸ், உதய்பூர்",
+      date: "டிசம்பர் 1 - 2, 2026",
+      venue: "பிரசங் லான்",
       countdownTitle: "திருமண நாள்",
       days: "நாட்கள்",
       hours: "மணி",
@@ -743,7 +743,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsFamilies: "குடும்பங்கள்",
       hostsGroomSide: "மணமகன் தரப்பு",
       hostsBrideSide: "மணமகள் தரப்பு",
-      hostsBottomNote: '"எங்கள் பிள்ளைகளின் திருமண விழாவில் கலந்துகொள்ள அன்போடு அழைக்கிறோம்."',
+      hostsBottomNote: '"எங்கள் சஞ்சிதாவின் திருமண விழாவில் கலந்துகொள்ள அன்போடு அழைக்கிறோம்."',
       venueTitle: "கொண்டாட்ட இடம்",
       directionsBtn: "வழி காட்டு",
       footerText: "அன்பும் ஆசியும்"
@@ -751,11 +751,11 @@ document.addEventListener('DOMContentLoaded', () => {
     tel: {
       mantra: "|| శ్రీ గణేశాయ నమః ||",
       subtitle: "వివాహ వేడుకకు",
-      groom: "అమరదీప్",
-      bride: "సృష్టి",
+      groom: "ధర్మేంద్ర",
+      bride: "సంచిత",
       weds: "వివాహమాడుతున్నారు",
-      date: "శనివారం, నవంబర్ 28, 2026",
-      venue: "ది ఒబెరాయ్ ఉదయ్‌విలాస్, ఉదయపూర్",
+      date: "డిసెంబర్ 1 - 2, 2026",
+      venue: "ప్రసంగ్ లాన్",
       countdownTitle: "శుభ వివాహ తేదీ",
       days: "రోజులు",
       hours: "గంటలు",
@@ -768,7 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hostsFamilies: "కుటుంబాలు",
       hostsGroomSide: "వరుడి వైపు",
       hostsBrideSide: "వధువు వైపు",
-      hostsBottomNote: '"మా పిల్లల వివాహ వేడుకలో మీ సమక్షం కోసం ఆత్మీయంగా వేడుకుంటున్నాం."',
+      hostsBottomNote: '"మా సంచిత వివాహ వేడుకలో మీ సమక్షం కోసం ఆత్మీయంగా వేడుకుంటున్నాం."',
       venueTitle: "వేడుక స్థలం",
       directionsBtn: "దిశలు పొందండి",
       footerText: "ప్రేమతో మరియు ఆశీర్వాదంతో"
@@ -919,32 +919,18 @@ window.closeLightbox = closeLightbox;
 // ----------------------------------------------------
 const gallerySlides = [
   { 
-    img: 'assets/gallery1.webp', 
-    thumb: 'assets/gallery1.webp',
+    img: 'assets/couple2.jpeg', 
+    thumb: 'assets/couple2.jpeg',
+    tag: 'Sanchita & Dharmendra', 
+    title: 'Eternal Love', 
+    desc: 'Together in love, ready to embark on a beautiful lifelong journey' 
+  },
+  { 
+    img: 'assets/couple1.jpeg', 
+    thumb: 'assets/couple1.jpeg',
     tag: 'Pre-Wedding', 
-    title: 'Cherished Moments', 
-    desc: 'Capturing our beautiful memories together' 
-  },
-  { 
-    img: 'assets/gallery2.webp', 
-    thumb: 'assets/gallery2.webp',
-    tag: 'Ceremony', 
-    title: 'Traditional Blessings', 
-    desc: 'Sacred rituals of love and union' 
-  },
-  { 
-    img: 'assets/gallery3.webp', 
-    thumb: 'assets/gallery3.webp',
-    tag: 'Celebration', 
-    title: 'Joyous Festivities', 
-    desc: 'Celebrating love with family and friends' 
-  },
-  { 
-    img: 'assets/gallery4.webp', 
-    thumb: 'assets/gallery4.webp',
-    tag: 'Holy Matrimony', 
-    title: 'Eternal Promises', 
-    desc: 'Two souls united together forever' 
+    title: 'Smiles & Togetherness', 
+    desc: 'Cherishing beautiful memories filled with love and laughter' 
   }
 ];
 
@@ -1041,3 +1027,93 @@ setTimeout(() => {
   updateGalleryCarouselUI();
   resetCarouselTimer();
 }, 200);
+
+// ----------------------------------------------------
+// INTERACTIVE LOVE & BLESSINGS COUNTER
+// ----------------------------------------------------
+let weddingLoveCount = parseInt(localStorage.getItem('weddingLoveCount') || '286', 10);
+
+function updateLoveCounterDisplay() {
+  const counterEl = document.getElementById('love-counter');
+  if (counterEl) {
+    counterEl.textContent = weddingLoveCount;
+  }
+}
+
+function sendLoveToCouple(e) {
+  if (e && e.preventDefault) e.preventDefault();
+
+  weddingLoveCount += 1;
+  localStorage.setItem('weddingLoveCount', weddingLoveCount.toString());
+  updateLoveCounterDisplay();
+
+  // Button micro bounce animation
+  const btn = document.getElementById('love-btn');
+  if (btn) {
+    btn.style.transform = 'scale(1.15)';
+    setTimeout(() => {
+      btn.style.transform = '';
+    }, 250);
+  }
+
+  // Floating heart animation
+  spawnFloatingHeart(e);
+
+  // Canvas confetti burst celebration
+  if (window.confetti) {
+    window.confetti({
+      particleCount: 35,
+      spread: 70,
+      origin: { y: 0.75 },
+      colors: ['#8A3E4E', '#C5A059', '#FDE8EB', '#E11D48']
+    });
+  }
+
+  // Temporary feedback label
+  const fb = document.getElementById('love-feedback');
+  if (fb) {
+    fb.style.opacity = '1';
+    setTimeout(() => {
+      fb.style.opacity = '0';
+    }, 2000);
+  }
+}
+
+function spawnFloatingHeart(e) {
+  const heart = document.createElement('div');
+  heart.textContent = '❤️';
+  heart.style.position = 'fixed';
+  heart.style.zIndex = '9999';
+  heart.style.pointerEvents = 'none';
+  heart.style.fontSize = Math.floor(Math.random() * 12 + 22) + 'px';
+  heart.style.transition = 'transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease-out';
+  
+  const x = e && e.clientX ? e.clientX : window.innerWidth / 2;
+  const y = e && e.clientY ? e.clientY : window.innerHeight / 2;
+  heart.style.left = (x - 12) + 'px';
+  heart.style.top = (y - 12) + 'px';
+
+  document.body.appendChild(heart);
+
+  const driftX = (Math.random() - 0.5) * 140;
+  const driftY = -(Math.random() * 140 + 80);
+
+  requestAnimationFrame(() => {
+    heart.style.transform = `translate(${driftX}px, ${driftY}px) scale(1.4)`;
+    heart.style.opacity = '0';
+  });
+
+  setTimeout(() => {
+    if (heart.parentNode) heart.parentNode.removeChild(heart);
+  }, 1300);
+}
+
+window.sendLoveToCouple = sendLoveToCouple;
+
+// Initialize on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', updateLoveCounterDisplay);
+} else {
+  updateLoveCounterDisplay();
+}
+
