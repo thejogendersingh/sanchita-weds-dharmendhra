@@ -116,26 +116,40 @@
         </div>
       </div>
 
-      <!-- 2. Subtitle & Grand Royal Couple Names (Larger, Bolder & Majestic) -->
+      <!-- 2. Subtitle & Grand Royal Couple Names with Parents Details -->
       <div class="flex flex-col items-center justify-center w-full">
         <p data-trans="subtitle" class="font-sans text-[8.5px] sm:text-[10px] uppercase tracking-[0.32em] text-[#164E40] font-bold mb-0.5">
           THE WEDDING CELEBRATION OF
         </p>
 
-        <!-- Couple Names -->
-        <h1 data-trans="bride" class="font-serif text-5xl sm:text-7xl font-bold tracking-wide text-[#0D3B3E] drop-shadow-md leading-tight">
-          Sanchita
-        </h1>
-
-        <div class="flex items-center justify-center gap-2.5 sm:gap-4 my-0.5 w-full">
-          <div class="w-8 sm:w-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]"></div>
-          <span data-trans="weds" class="font-cursive text-[#C5A059] text-2xl sm:text-4xl font-normal tracking-widest transform -rotate-3 drop-shadow-sm px-1">weds</span>
-          <div class="w-8 sm:w-16 h-[1.5px] bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]"></div>
+        <!-- Bride (on top) -->
+        <div class="flex flex-col items-center text-center">
+          <h1 class="font-serif text-3xl sm:text-5xl font-bold tracking-wide text-[#0D3B3E] drop-shadow-md leading-tight">
+            <span class="font-sans text-[10px] sm:text-xs font-semibold text-[#8A3E4E] tracking-widest uppercase mr-1">Ms.</span><span data-trans="bride">Sanchita</span>
+          </h1>
+          <div class="font-sans text-[9px] sm:text-[10px] font-semibold text-[#8A3E4E] tracking-wider -mt-0.5">(Preeti)</div>
+          <div class="font-serif italic text-[10px] sm:text-[11.5px] text-charcoal/80 font-medium tracking-wide">
+            D/O Mrs. Bharti and Mr. Mukesh Kakwani
+          </div>
         </div>
 
-        <h2 data-trans="groom" class="font-serif text-5xl sm:text-7xl font-bold tracking-wide text-[#0D3B3E] drop-shadow-md leading-tight">
-          Dharmendra
-        </h2>
+        <!-- Weds Divider -->
+        <div class="flex items-center justify-center gap-2 sm:gap-3 my-0.5 w-full">
+          <div class="w-6 sm:w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059] to-[#C5A059]"></div>
+          <span data-trans="weds" class="font-cursive text-[#C5A059] text-xl sm:text-2xl font-normal tracking-widest transform -rotate-3 drop-shadow-sm px-1">weds</span>
+          <div class="w-6 sm:w-12 h-[1px] bg-gradient-to-l from-transparent via-[#C5A059] to-[#C5A059]"></div>
+        </div>
+
+        <!-- Groom (below) -->
+        <div class="flex flex-col items-center text-center">
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold tracking-wide text-[#0D3B3E] drop-shadow-md leading-tight">
+            <span class="font-sans text-[10px] sm:text-xs font-semibold text-[#8A3E4E] tracking-widest uppercase mr-1">Mr.</span><span data-trans="groom">Dharmendra</span>
+          </h2>
+          <div class="font-sans text-[9px] sm:text-[10px] font-semibold text-[#8A3E4E] tracking-wider -mt-0.5">(Monu)</div>
+          <div class="font-serif italic text-[10px] sm:text-[11.5px] text-charcoal/80 font-medium tracking-wide">
+            S/O Mrs. Mamta and late Mr Choithmal Ahuja <span class="font-sans not-italic text-[9px] sm:text-[10px] font-bold text-[#C5A059]">[Betul (M.P.)]</span>
+          </div>
+        </div>
       </div>
 
       <!-- 3. Date & Venue Details -->
@@ -144,7 +158,7 @@
           1st &amp; 2nd December 2026
         </span>
         <span data-trans="venue" class="font-sans text-[8px] sm:text-[9.5px] font-bold tracking-[0.2em] text-[#C5A059] uppercase mt-0.5">
-          At Prasang Lawn
+          Accord Wildlife, Pench
         </span>
       </div>
 
@@ -197,7 +211,11 @@
       <div class="space-y-2 scroll-reveal">
         <span class="font-sans text-[10px] tracking-[0.3em] text-[#C5A059] font-bold uppercase block">THE COUPLE</span>
         <h2 class="font-cursive text-5xl sm:text-6xl text-black font-medium tracking-wide">Bride &amp; Groom</h2>
-        <div class="w-12 h-[1px] bg-royal-gold/45 mx-auto mt-2"></div>
+        <div class="flex items-center justify-center gap-3 pt-1">
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/50"></div>
+          <span class="text-[#C5A059] text-xs select-none">✦</span>
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/50"></div>
+        </div>
       </div>
 
       <!-- 2 Columns Grid for Bride and Groom Cards -->
@@ -209,7 +227,7 @@
           <div class="relative max-w-[280px] w-full transition-transform duration-500 hover:scale-[1.02] filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]">
             <div class="relative aspect-[4/5]">
               <div class="absolute top-[58px] bottom-[58px] left-[44px] right-[44px] rounded-[50%] overflow-hidden z-0 bg-white">
-                <img src="assets/couple2.jpeg" alt="Sanchita - The Bride" class="w-full h-full object-cover" style="object-position: 45% 20%; transform: scale(1.15);" loading="lazy" decoding="async" />
+                <img src="assets/bride.png" alt="Sanchita - The Bride" class="w-full h-full object-cover" style="object-position: 50% 15%; transform: scale(1.08);" loading="lazy" decoding="async" />
               </div>
               <img src="assets/couple-cover.webp" class="absolute inset-0 w-full h-full object-fill z-10 pointer-events-none" loading="lazy" decoding="async" />
             </div>
@@ -230,7 +248,7 @@
           <div class="relative max-w-[280px] w-full transition-transform duration-500 hover:scale-[1.02] filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]">
             <div class="relative aspect-[4/5]">
               <div class="absolute top-[58px] bottom-[58px] left-[44px] right-[44px] rounded-[50%] overflow-hidden z-0 bg-white">
-                <img src="assets/couple1.jpeg" alt="Dharmendra - The Groom" class="w-full h-full object-cover" style="object-position: 32% 18%; transform: scale(1.22);" loading="lazy" decoding="async" />
+                <img src="assets/groom.png" alt="Dharmendra - The Groom" class="w-full h-full object-cover" style="object-position: 50% 12%; transform: scale(1.08);" loading="lazy" decoding="async" />
               </div>
               <img src="assets/couple-cover.webp" class="absolute inset-0 w-full h-full object-fill z-10 pointer-events-none" loading="lazy" decoding="async" />
             </div>
@@ -246,6 +264,13 @@
         </div>
 
       </div>
+
+      <!-- Elegant Horizontal Rose Garland Section Divider -->
+      <div class="pt-8 flex items-center justify-center gap-3 max-w-xl mx-auto scroll-reveal">
+        <div class="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-[#C5A059]/60"></div>
+        <img src="assets/divider-flower.png" alt="Floral Garland Divider" class="w-44 sm:w-56 h-auto object-contain select-none pointer-events-none filter drop-shadow-[0_4px_10px_rgba(197,160,89,0.15)]" loading="lazy" decoding="async" />
+        <div class="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#C5A059]/30 to-[#C5A059]/60"></div>
+      </div>
     </div>
   </section>
 
@@ -257,7 +282,11 @@
       <div class="space-y-2 scroll-reveal">
         <span class="font-sans text-[10px] tracking-[0.3em] text-[#C5A059] font-bold uppercase block">THE ITINERARY</span>
         <h2 data-trans="eventsTitle" class="font-cursive text-5xl sm:text-6xl text-black font-medium tracking-wide">Sacred Ceremonies</h2>
-        <div class="w-12 h-[1px] bg-royal-gold/45 mx-auto mt-2"></div>
+        <div class="flex items-center justify-center gap-3 pt-1">
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/50"></div>
+          <span class="text-[#C5A059] text-xs select-none">✦</span>
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/50"></div>
+        </div>
       </div>
 
       <!-- Pure Event Invitation Poster Cards (Theme Background + Frosted Invitation Plaque + Bottom Couple Cutout) -->
@@ -280,23 +309,38 @@
             <span class="absolute bottom-36 left-4 text-base opacity-75 animate-float-mid">🌹</span>
           </div>
 
-          <!-- Top Frosted Glass Invitation Plaque (Matches User Mockup) -->
-          <div class="relative z-20 mx-4 sm:mx-6 mt-12 sm:mt-14 p-4 sm:p-5 rounded-2xl bg-white/75 backdrop-blur-md border border-[#C5A059]/50 shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-center space-y-1.5">
-            <div class="font-cursive text-2xl sm:text-3xl text-[#C5A059] leading-none">S ✦ D</div>
-            <div class="font-serif italic text-xs sm:text-sm text-[#8A3E4E] font-medium tracking-wide">#SaathCeremony</div>
-            <div class="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.25em] text-charcoal/70 font-bold">
-              PLEASE JOIN US FOR THE AUSPICIOUS
-            </div>
-            <p class="font-serif italic text-[11px] sm:text-xs text-charcoal-muted leading-relaxed max-w-[240px] mx-auto">
-              "Traditional auspicious Saanth ritual invoked with divine blessings."
-            </p>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-[#8A3E4E] uppercase pt-0.5">
-              SAATH
+          <!-- Top Frosted Glass Invitation Plaque (Matches User Mockup 1:1) -->
+          <div class="relative z-20 mx-3 sm:mx-5 mt-8 sm:mt-10 p-3 sm:p-4 rounded-2xl bg-white/85 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_8px_30px_rgba(0,0,0,0.08)] text-center space-y-1">
+            <h3 class="font-cursive text-3xl sm:text-4xl text-[#8A3E4E] font-medium tracking-wide">
+              Saath
             </h3>
-            <div class="inline-block px-3.5 py-1 rounded-full border border-[#C5A059]/70 bg-[#FAF6ED]/95 shadow-sm mt-1">
-              <span class="font-sans text-[10px] sm:text-[11px] font-bold text-[#8A3E4E] tracking-wider uppercase block">
-                10:00 AM • AT OWN RESIDENCE
-              </span>
+            <p class="font-serif italic text-xs sm:text-[13px] text-charcoal-muted leading-relaxed max-w-[260px] mx-auto">
+              Traditional auspicious Saanth ritual invoked with divine blessings
+            </p>
+            
+            <!-- Floral Gold Divider -->
+            <div class="flex items-center justify-center gap-2 py-0.5">
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/60"></div>
+              <span class="text-[#C5A059] text-xs select-none">✿</span>
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/60"></div>
+            </div>
+
+            <!-- Two-Column Date, Time & Venue Block -->
+            <div class="inline-block w-full max-w-[270px] sm:max-w-[290px] px-3 py-1.5 rounded-xl border border-[#C5A059]/60 bg-[#FAF6ED]/95 shadow-sm text-center">
+              <div class="grid grid-cols-2 gap-1 border-b border-[#C5A059]/30 pb-1 mb-1">
+                <div class="border-r border-[#C5A059]/30 pr-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">DATE</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">Sun · 30 Nov. 2026</span>
+                </div>
+                <div class="pl-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">TIME</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">10:00 AM onwards</span>
+                </div>
+              </div>
+              <div>
+                <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">VENUE</span>
+                <span class="font-serif text-[10.5px] sm:text-[11.5px] font-bold text-[#8A3E4E] block">At Own Residence</span>
+              </div>
             </div>
           </div>
 
@@ -321,23 +365,38 @@
             <span class="absolute bottom-36 left-4 text-base opacity-80 animate-float-slow">🌹</span>
           </div>
 
-          <!-- Top Frosted Glass Invitation Plaque -->
-          <div class="relative z-20 mx-4 sm:mx-6 mt-12 sm:mt-14 p-4 sm:p-5 rounded-2xl bg-white/75 backdrop-blur-md border border-[#C5A059]/50 shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-center space-y-1.5">
-            <div class="font-cursive text-2xl sm:text-3xl text-[#C5A059] leading-none">S ✦ D</div>
-            <div class="font-serif italic text-xs sm:text-sm text-[#8A3E4E] font-medium tracking-wide">#RangEMehendi</div>
-            <div class="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.25em] text-charcoal/70 font-bold">
-              PLEASE JOIN US FOR THE AUSPICIOUS
-            </div>
-            <p class="font-serif italic text-[11px] sm:text-xs text-charcoal-muted leading-relaxed max-w-[240px] mx-auto">
-              "Vibrant afternoon celebrating henna art, folk music & festive joy."
-            </p>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-[#8A3E4E] uppercase pt-0.5">
-              MEHENDI RASAM
+          <!-- Top Frosted Glass Invitation Plaque (Matches User Mockup 1:1) -->
+          <div class="relative z-20 mx-3 sm:mx-5 mt-8 sm:mt-10 p-3 sm:p-4 rounded-2xl bg-white/85 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_8px_30px_rgba(0,0,0,0.08)] text-center space-y-1">
+            <h3 class="font-cursive text-3xl sm:text-4xl text-[#8A3E4E] font-medium tracking-wide">
+              Mehendi Rasam
             </h3>
-            <div class="inline-block px-3.5 py-1 rounded-full border border-[#C5A059]/70 bg-[#FAF6ED]/95 shadow-sm mt-1">
-              <span class="font-sans text-[10px] sm:text-[11px] font-bold text-[#8A3E4E] tracking-wider uppercase block">
-                01:00 PM • AT PRASANG LAWN
-              </span>
+            <p class="font-serif italic text-xs sm:text-[13px] text-charcoal-muted leading-relaxed max-w-[260px] mx-auto">
+              Vibrant afternoon celebrating henna art, folk music &amp; festive joy
+            </p>
+            
+            <!-- Floral Gold Divider -->
+            <div class="flex items-center justify-center gap-2 py-0.5">
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/60"></div>
+              <span class="text-[#C5A059] text-xs select-none">✿</span>
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/60"></div>
+            </div>
+
+            <!-- Two-Column Date, Time & Venue Block -->
+            <div class="inline-block w-full max-w-[270px] sm:max-w-[290px] px-3 py-1.5 rounded-xl border border-[#C5A059]/60 bg-[#FAF6ED]/95 shadow-sm text-center">
+              <div class="grid grid-cols-2 gap-1 border-b border-[#C5A059]/30 pb-1 mb-1">
+                <div class="border-r border-[#C5A059]/30 pr-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">DATE</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">Sun · 30 Nov. 2026</span>
+                </div>
+                <div class="pl-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">TIME</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">01:00 PM onwards</span>
+                </div>
+              </div>
+              <div>
+                <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">VENUE</span>
+                <span class="font-serif text-[10.5px] sm:text-[11.5px] font-bold text-[#8A3E4E] block">Prasang Lawn</span>
+              </div>
             </div>
           </div>
 
@@ -348,7 +407,7 @@
         <!-- Event Card 3: Pre-Reception -->
         <div class="group relative aspect-[9/15] sm:aspect-[9/14] min-h-[520px] rounded-[30px] overflow-hidden shadow-2xl border-2 border-[#C5A059] scroll-reveal transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_20px_50px_rgba(197,160,89,0.25)] flex flex-col justify-between">
           <!-- Themed Background Image -->
-          <img src="assets/g-welcome-bg-BCda9f2G.png" alt="Pre-Reception Background" class="absolute inset-0 w-full h-full object-cover object-top z-0 pointer-events-none transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <img src="assets/prerecption-bg.png" alt="Pre-Reception Background" class="absolute inset-0 w-full h-full object-cover object-top z-0 pointer-events-none transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
           
           <!-- Inner Decorative Gold Inset Frame -->
           <div class="absolute inset-2 sm:inset-2.5 rounded-[24px] border border-[#C5A059]/40 pointer-events-none z-10"></div>
@@ -362,34 +421,49 @@
             <span class="absolute bottom-36 left-4 text-base opacity-75 animate-float-mid">🌹</span>
           </div>
 
-          <!-- Top Frosted Glass Invitation Plaque -->
-          <div class="relative z-20 mx-4 sm:mx-6 mt-12 sm:mt-14 p-4 sm:p-5 rounded-2xl bg-white/75 backdrop-blur-md border border-[#C5A059]/50 shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-center space-y-1.5">
-            <div class="font-cursive text-2xl sm:text-3xl text-[#C5A059] leading-none">S ✦ D</div>
-            <div class="font-serif italic text-xs sm:text-sm text-[#8A3E4E] font-medium tracking-wide">#PreReception</div>
-            <div class="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.25em] text-charcoal/70 font-bold">
-              PLEASE JOIN US FOR THE AUSPICIOUS
-            </div>
-            <p class="font-serif italic text-[11px] sm:text-xs text-charcoal-muted leading-relaxed max-w-[240px] mx-auto">
-              "An elegant pre-reception evening welcoming family, friends & loved ones."
-            </p>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-[#8A3E4E] uppercase pt-0.5">
-              PRE-RECEPTION
+          <!-- Top Frosted Glass Invitation Plaque (Matches User Mockup 1:1) -->
+          <div class="relative z-20 mx-3 sm:mx-5 mt-8 sm:mt-10 p-3 sm:p-4 rounded-2xl bg-white/85 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_8px_30px_rgba(0,0,0,0.08)] text-center space-y-1">
+            <h3 class="font-cursive text-3xl sm:text-4xl text-[#8A3E4E] font-medium tracking-wide">
+              Pre-Reception
             </h3>
-            <div class="inline-block px-3.5 py-1 rounded-full border border-[#C5A059]/70 bg-[#FAF6ED]/95 shadow-sm mt-1">
-              <span class="font-sans text-[10px] sm:text-[11px] font-bold text-[#8A3E4E] tracking-wider uppercase block">
-                07:00 PM • AT PRASANG LAWN
-              </span>
+            <p class="font-serif italic text-xs sm:text-[13px] text-charcoal-muted leading-relaxed max-w-[260px] mx-auto">
+              An elegant evening welcoming family, friends &amp; loved ones
+            </p>
+            
+            <!-- Floral Gold Divider -->
+            <div class="flex items-center justify-center gap-2 py-0.5">
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/60"></div>
+              <span class="text-[#C5A059] text-xs select-none">✿</span>
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/60"></div>
+            </div>
+
+            <!-- Two-Column Date, Time & Venue Block -->
+            <div class="inline-block w-full max-w-[270px] sm:max-w-[290px] px-3 py-1.5 rounded-xl border border-[#C5A059]/60 bg-[#FAF6ED]/95 shadow-sm text-center">
+              <div class="grid grid-cols-2 gap-1 border-b border-[#C5A059]/30 pb-1 mb-1">
+                <div class="border-r border-[#C5A059]/30 pr-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">DATE</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">Sun · 30 Nov. 2026</span>
+                </div>
+                <div class="pl-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">TIME</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">07:00 PM onwards</span>
+                </div>
+              </div>
+              <div>
+                <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">VENUE</span>
+                <span class="font-serif text-[10.5px] sm:text-[11.5px] font-bold text-[#8A3E4E] block">Accord Wildlife Resort, Pench</span>
+              </div>
             </div>
           </div>
 
           <!-- Bottom Couple Cutout Image -->
-          <img src="assets/event-lagan-crop.png" alt="Pre-Reception Couple" class="absolute bottom-0 left-1/2 -translate-x-1/2 max-h-[46%] sm:max-h-[48%] w-auto object-contain pointer-events-none z-10 filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)]" loading="lazy" decoding="async" />
+          <img src="assets/prerecption-couple.png" alt="Pre-Reception Couple" class="absolute bottom-0 left-1/2 -translate-x-1/2 max-h-[46%] sm:max-h-[48%] w-auto object-contain pointer-events-none z-10 filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)]" loading="lazy" decoding="async" />
         </div>
 
         <!-- Event Card 4: Carnival -->
         <div class="group relative aspect-[9/15] sm:aspect-[9/14] min-h-[520px] rounded-[30px] overflow-hidden shadow-2xl border-2 border-[#C5A059] scroll-reveal transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_20px_50px_rgba(197,160,89,0.25)] flex flex-col justify-between">
           <!-- Themed Background Image -->
-          <img src="assets/g-welcome-bg-BCda9f2G.png" alt="Carnival Background" class="absolute inset-0 w-full h-full object-cover object-top z-0 pointer-events-none transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <img src="assets/carnival-bg.png" alt="Carnival Background" class="absolute inset-0 w-full h-full object-cover object-top z-0 pointer-events-none transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
           
           <!-- Inner Decorative Gold Inset Frame -->
           <div class="absolute inset-2 sm:inset-2.5 rounded-[24px] border border-[#C5A059]/40 pointer-events-none z-10"></div>
@@ -403,31 +477,46 @@
             <span class="absolute bottom-36 left-4 text-base opacity-80 animate-float-slow">🌹</span>
           </div>
 
-          <!-- Top Frosted Glass Invitation Plaque -->
-          <div class="relative z-20 mx-4 sm:mx-6 mt-12 sm:mt-14 p-4 sm:p-5 rounded-2xl bg-white/75 backdrop-blur-md border border-[#C5A059]/50 shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-center space-y-1.5">
-            <div class="font-cursive text-2xl sm:text-3xl text-[#C5A059] leading-none">S ✦ D</div>
-            <div class="font-serif italic text-xs sm:text-sm text-[#8A3E4E] font-medium tracking-wide">#WeddingCarnival</div>
-            <div class="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.25em] text-charcoal/70 font-bold">
-              PLEASE JOIN US FOR THE AUSPICIOUS
-            </div>
-            <p class="font-serif italic text-[11px] sm:text-xs text-charcoal-muted leading-relaxed max-w-[240px] mx-auto">
-              "A joyful celebration of colors, entertainment & togetherness."
-            </p>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-[#8A3E4E] uppercase pt-0.5">
-              CARNIVAL
+          <!-- Top Frosted Glass Invitation Plaque (Matches User Mockup 1:1) -->
+          <div class="relative z-20 mx-3 sm:mx-5 mt-8 sm:mt-10 p-3 sm:p-4 rounded-2xl bg-white/85 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_8px_30px_rgba(0,0,0,0.08)] text-center space-y-1">
+            <h3 class="font-cursive text-3xl sm:text-4xl text-[#8A3E4E] font-medium tracking-wide">
+              Carnival
             </h3>
-            <div class="inline-block px-3.5 py-1 rounded-full border border-[#C5A059]/70 bg-[#FAF6ED]/95 shadow-sm mt-1">
-              <span class="font-sans text-[10px] sm:text-[11px] font-bold text-[#8A3E4E] tracking-wider uppercase block">
-                1 DEC • 01:30 PM • PRASANG LAWN
-              </span>
+            <p class="font-serif italic text-xs sm:text-[13px] text-charcoal-muted leading-relaxed max-w-[260px] mx-auto">
+              A vibrant afternoon of tropical rhythms, fun games &amp; laughter
+            </p>
+            
+            <!-- Floral Gold Divider -->
+            <div class="flex items-center justify-center gap-2 py-0.5">
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/60"></div>
+              <span class="text-[#C5A059] text-xs select-none">✿</span>
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/60"></div>
+            </div>
+
+            <!-- Two-Column Date, Time & Venue Block -->
+            <div class="inline-block w-full max-w-[270px] sm:max-w-[290px] px-3 py-1.5 rounded-xl border border-[#C5A059]/60 bg-[#FAF6ED]/95 shadow-sm text-center">
+              <div class="grid grid-cols-2 gap-1 border-b border-[#C5A059]/30 pb-1 mb-1">
+                <div class="border-r border-[#C5A059]/30 pr-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">DATE</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">Mon · 01 Dec. 2026</span>
+                </div>
+                <div class="pl-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">TIME</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">01:00 PM Sharp</span>
+                </div>
+              </div>
+              <div>
+                <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">VENUE</span>
+                <span class="font-serif text-[10.5px] sm:text-[11.5px] font-bold text-[#8A3E4E] block">Accord Wildlife Resort, Pench</span>
+              </div>
             </div>
           </div>
 
           <!-- Bottom Couple Cutout Image -->
-          <img src="assets/event-lagan-crop.png" alt="Carnival Couple" class="absolute bottom-0 left-1/2 -translate-x-1/2 max-h-[46%] sm:max-h-[48%] w-auto object-contain pointer-events-none z-10 filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)]" loading="lazy" decoding="async" />
+          <img src="assets/carnival-couple.png" alt="Carnival Couple" class="absolute bottom-0 left-1/2 -translate-x-1/2 max-h-[46%] sm:max-h-[48%] w-auto object-contain pointer-events-none z-10 filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)]" loading="lazy" decoding="async" />
         </div>
 
-        <!-- Event Card 5: Sangeet -->
+        <!-- Event Card 5: Sundowner Sangeet -->
         <div class="group relative aspect-[9/15] sm:aspect-[9/14] min-h-[520px] rounded-[30px] overflow-hidden shadow-2xl border-2 border-[#C5A059] scroll-reveal transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_20px_50px_rgba(197,160,89,0.25)] flex flex-col justify-between">
           <!-- Themed Background Image -->
           <img src="assets/g-sangeet-bg-B0tRJ9nE.png" alt="Sangeet Background" class="absolute inset-0 w-full h-full object-cover object-top z-0 pointer-events-none transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
@@ -444,23 +533,38 @@
             <span class="absolute bottom-36 left-4 text-base opacity-75 animate-float-mid">🌹</span>
           </div>
 
-          <!-- Top Frosted Glass Invitation Plaque -->
-          <div class="relative z-20 mx-4 sm:mx-6 mt-12 sm:mt-14 p-4 sm:p-5 rounded-2xl bg-white/75 backdrop-blur-md border border-[#C5A059]/50 shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-center space-y-1.5">
-            <div class="font-cursive text-2xl sm:text-3xl text-[#C5A059] leading-none">S ✦ D</div>
-            <div class="font-serif italic text-xs sm:text-sm text-[#8A3E4E] font-medium tracking-wide">#GeetSangeet</div>
-            <div class="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.25em] text-charcoal/70 font-bold">
-              PLEASE JOIN US FOR THE AUSPICIOUS
-            </div>
-            <p class="font-serif italic text-[11px] sm:text-xs text-charcoal-muted leading-relaxed max-w-[240px] mx-auto">
-              "An enchanting musical evening filled with stellar dance performances."
-            </p>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-[#8A3E4E] uppercase pt-0.5">
-              SANGEET
+          <!-- Top Frosted Glass Invitation Plaque (Matches User Mockup 1:1) -->
+          <div class="relative z-20 mx-3 sm:mx-5 mt-8 sm:mt-10 p-3 sm:p-4 rounded-2xl bg-white/85 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_8px_30px_rgba(0,0,0,0.08)] text-center space-y-1">
+            <h3 class="font-cursive text-3xl sm:text-4xl text-[#8A3E4E] font-medium tracking-wide">
+              Sundowner Sangeet
             </h3>
-            <div class="inline-block px-3.5 py-1 rounded-full border border-[#C5A059]/70 bg-[#FAF6ED]/95 shadow-sm mt-1">
-              <span class="font-sans text-[10px] sm:text-[11px] font-bold text-[#8A3E4E] tracking-wider uppercase block">
-                1 DEC • 07:00 PM • PRASANG LAWN
-              </span>
+            <p class="font-serif italic text-xs sm:text-[13px] text-charcoal-muted leading-relaxed max-w-[260px] mx-auto">
+              An evening of song, dance and celebration under the setting sun
+            </p>
+            
+            <!-- Floral Gold Divider -->
+            <div class="flex items-center justify-center gap-2 py-0.5">
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/60"></div>
+              <span class="text-[#C5A059] text-xs select-none">✿</span>
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/60"></div>
+            </div>
+
+            <!-- Two-Column Date, Time & Venue Block -->
+            <div class="inline-block w-full max-w-[270px] sm:max-w-[290px] px-3 py-1.5 rounded-xl border border-[#C5A059]/60 bg-[#FAF6ED]/95 shadow-sm text-center">
+              <div class="grid grid-cols-2 gap-1 border-b border-[#C5A059]/30 pb-1 mb-1">
+                <div class="border-r border-[#C5A059]/30 pr-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">DATE</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">Mon · 01 Dec. 2026</span>
+                </div>
+                <div class="pl-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">TIME</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">07:00 PM onwards</span>
+                </div>
+              </div>
+              <div>
+                <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">VENUE</span>
+                <span class="font-serif text-[10.5px] sm:text-[11.5px] font-bold text-[#8A3E4E] block">Accord Wildlife Resort, Pench</span>
+              </div>
             </div>
           </div>
 
@@ -485,23 +589,38 @@
             <span class="absolute bottom-36 left-4 text-base opacity-75 animate-float-mid">🌼</span>
           </div>
 
-          <!-- Top Frosted Glass Invitation Plaque -->
-          <div class="relative z-20 mx-4 sm:mx-6 mt-12 sm:mt-14 p-4 sm:p-5 rounded-2xl bg-white/75 backdrop-blur-md border border-[#C5A059]/50 shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-center space-y-1.5">
-            <div class="font-cursive text-2xl sm:text-3xl text-[#C5A059] leading-none">S ✦ D</div>
-            <div class="font-serif italic text-xs sm:text-sm text-[#8A3E4E] font-medium tracking-wide">#BaraatAgaman</div>
-            <div class="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.25em] text-charcoal/70 font-bold">
-              PLEASE JOIN US FOR THE AUSPICIOUS
-            </div>
-            <p class="font-serif italic text-[11px] sm:text-xs text-charcoal-muted leading-relaxed max-w-[240px] mx-auto">
-              "Grand royal welcome of the Barat procession with dhol beats."
-            </p>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-[#8A3E4E] uppercase pt-0.5">
-              BARAT
+          <!-- Top Frosted Glass Invitation Plaque (Matches User Mockup 1:1) -->
+          <div class="relative z-20 mx-3 sm:mx-5 mt-8 sm:mt-10 p-3 sm:p-4 rounded-2xl bg-white/85 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_8px_30px_rgba(0,0,0,0.08)] text-center space-y-1">
+            <h3 class="font-cursive text-3xl sm:text-4xl text-[#8A3E4E] font-medium tracking-wide">
+              Barat
             </h3>
-            <div class="inline-block px-3.5 py-1 rounded-full border border-[#C5A059]/70 bg-[#FAF6ED]/95 shadow-sm mt-1">
-              <span class="font-sans text-[10px] sm:text-[11px] font-bold text-[#8A3E4E] tracking-wider uppercase block">
-                2 DEC • 11:00 AM • PRASANG LAWN
-              </span>
+            <p class="font-serif italic text-xs sm:text-[13px] text-charcoal-muted leading-relaxed max-w-[260px] mx-auto">
+              The grand procession of the Barat followed by sacred Phere and ceremonies
+            </p>
+            
+            <!-- Floral Gold Divider -->
+            <div class="flex items-center justify-center gap-2 py-0.5">
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/60"></div>
+              <span class="text-[#C5A059] text-xs select-none">✿</span>
+              <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/60"></div>
+            </div>
+
+            <!-- Two-Column Date, Time & Venue Block -->
+            <div class="inline-block w-full max-w-[270px] sm:max-w-[290px] px-3 py-1.5 rounded-xl border border-[#C5A059]/60 bg-[#FAF6ED]/95 shadow-sm text-center">
+              <div class="grid grid-cols-2 gap-1 border-b border-[#C5A059]/30 pb-1 mb-1">
+                <div class="border-r border-[#C5A059]/30 pr-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">DATE</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">Tue · 02 Dec. 2026</span>
+                </div>
+                <div class="pl-1">
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">TIME</span>
+                  <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">12:00 PM onwards</span>
+                </div>
+              </div>
+              <div>
+                <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">VENUE</span>
+                <span class="font-serif text-[10.5px] sm:text-[11.5px] font-bold text-[#8A3E4E] block">Accord Wildlife Resort, Pench</span>
+              </div>
             </div>
           </div>
 
@@ -513,7 +632,7 @@
         <div class="md:col-span-2 flex justify-center">
           <div class="group relative aspect-[9/15] sm:aspect-[9/14] min-h-[520px] max-w-[380px] w-full rounded-[30px] overflow-hidden shadow-2xl border-2 border-[#C5A059] scroll-reveal transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_20px_50px_rgba(197,160,89,0.25)] flex flex-col justify-between">
             <!-- Themed Background Image -->
-            <img src="assets/g-wedding-bg-8_wipKLl.png" alt="Reception Background" class="absolute inset-0 w-full h-full object-cover object-top z-0 pointer-events-none transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+            <img src="assets/reception-bg.png" alt="Reception Background" class="absolute inset-0 w-full h-full object-cover object-top z-0 pointer-events-none transform group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
             
             <!-- Inner Decorative Gold Inset Frame -->
             <div class="absolute inset-2 sm:inset-2.5 rounded-[24px] border border-[#C5A059]/40 pointer-events-none z-10"></div>
@@ -527,31 +646,53 @@
               <span class="absolute bottom-36 left-4 text-base opacity-75 animate-float-mid">✨</span>
             </div>
 
-            <!-- Top Frosted Glass Invitation Plaque -->
-            <div class="relative z-20 mx-4 sm:mx-6 mt-12 sm:mt-14 p-4 sm:p-5 rounded-2xl bg-white/75 backdrop-blur-md border border-[#C5A059]/50 shadow-[0_8px_30px_rgba(0,0,0,0.06)] text-center space-y-1.5">
-              <div class="font-cursive text-2xl sm:text-3xl text-[#C5A059] leading-none">S ✦ D</div>
-              <div class="font-serif italic text-xs sm:text-sm text-[#8A3E4E] font-medium tracking-wide">#GrandReception</div>
-              <div class="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.25em] text-charcoal/70 font-bold">
-                PLEASE JOIN US FOR THE AUSPICIOUS
-              </div>
-              <p class="font-serif italic text-[11px] sm:text-xs text-charcoal-muted leading-relaxed max-w-[240px] mx-auto">
-                "A majestic celebratory evening to shower blessings on the newlyweds."
-              </p>
-              <h3 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-[#8A3E4E] uppercase pt-0.5">
-                RECEPTION
+            <!-- Top Frosted Glass Invitation Plaque (Matches User Mockup 1:1) -->
+            <div class="relative z-20 mx-3 sm:mx-5 mt-8 sm:mt-10 p-3 sm:p-4 rounded-2xl bg-white/85 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_8px_30px_rgba(0,0,0,0.08)] text-center space-y-1">
+              <h3 class="font-cursive text-3xl sm:text-4xl text-[#8A3E4E] font-medium tracking-wide">
+                Reception
               </h3>
-              <div class="inline-block px-3.5 py-1 rounded-full border border-[#C5A059]/70 bg-[#FAF6ED]/95 shadow-sm mt-1">
-                <span class="font-sans text-[10px] sm:text-[11px] font-bold text-[#8A3E4E] tracking-wider uppercase block">
-                  2 DEC • 07:00 PM • PRASANG LAWN
-                </span>
+              <p class="font-serif italic text-xs sm:text-[13px] text-charcoal-muted leading-relaxed max-w-[260px] mx-auto">
+                An elegant evening to celebrate our union with loved ones
+              </p>
+              
+              <!-- Floral Gold Divider -->
+              <div class="flex items-center justify-center gap-2 py-0.5">
+                <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/60"></div>
+                <span class="text-[#C5A059] text-xs select-none">✿</span>
+                <div class="w-10 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/60"></div>
+              </div>
+
+              <!-- Two-Column Date, Time & Venue Block -->
+              <div class="inline-block w-full max-w-[270px] sm:max-w-[290px] px-3 py-1.5 rounded-xl border border-[#C5A059]/60 bg-[#FAF6ED]/95 shadow-sm text-center">
+                <div class="grid grid-cols-2 gap-1 border-b border-[#C5A059]/30 pb-1 mb-1">
+                  <div class="border-r border-[#C5A059]/30 pr-1">
+                    <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">DATE</span>
+                    <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">Tue · 02 Dec. 2026</span>
+                  </div>
+                  <div class="pl-1">
+                    <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">TIME</span>
+                    <span class="font-serif text-[11px] sm:text-[12px] font-bold text-[#8A3E4E] block">07:00 PM onwards</span>
+                  </div>
+                </div>
+                <div>
+                  <span class="font-sans text-[7.5px] uppercase tracking-wider text-[#C5A059] font-bold block">VENUE</span>
+                  <span class="font-serif text-[10.5px] sm:text-[11.5px] font-bold text-[#8A3E4E] block">Accord Wildlife Resort, Pench</span>
+                </div>
               </div>
             </div>
 
             <!-- Bottom Couple Cutout Image -->
-            <img src="assets/04-CC6lrDGi-crop.png" alt="Reception Couple" class="absolute bottom-0 left-1/2 -translate-x-1/2 max-h-[46%] sm:max-h-[48%] w-auto object-contain pointer-events-none z-10 filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)]" loading="lazy" decoding="async" />
+            <img src="assets/reception-couple.png" alt="Reception Couple" class="absolute bottom-0 left-1/2 -translate-x-1/2 max-h-[46%] sm:max-h-[48%] w-auto object-contain pointer-events-none z-10 filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)]" loading="lazy" decoding="async" />
           </div>
         </div>
 
+      </div>
+
+      <!-- Elegant Horizontal Rose Garland Section Divider (Bottom of Events) -->
+      <div class="pt-8 sm:pt-12 flex items-center justify-center gap-3 max-w-xl mx-auto scroll-reveal">
+        <div class="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-[#C5A059]/60"></div>
+        <img src="assets/divider-flower.png" alt="Floral Garland Divider" class="w-52 sm:w-64 h-auto object-contain select-none pointer-events-none filter drop-shadow-[0_4px_12px_rgba(197,160,89,0.18)]" loading="lazy" decoding="async" />
+        <div class="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#C5A059]/30 to-[#C5A059]/60"></div>
       </div>
 
     </div>
@@ -564,7 +705,11 @@
       <div class="space-y-2 scroll-reveal">
         <span class="font-sans text-[10px] tracking-[0.3em] text-[#C5A059] font-bold block">SWEET MEMORIES</span>
         <h2 class="font-cursive text-5xl sm:text-6xl text-black font-medium tracking-wide">Sacred Moments</h2>
-        <div class="w-12 h-[1px] bg-royal-gold/45 mx-auto mt-2"></div>
+        <div class="flex items-center justify-center gap-3 pt-1">
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/50"></div>
+          <span class="text-[#C5A059] text-xs select-none">✦</span>
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/50"></div>
+        </div>
       </div>
 
       <!-- Single Featured Carousel Box (Narrowed Width with Rich Invitation Border, Arrows Removed) -->
@@ -613,8 +758,8 @@
   <!-- SHAHI PARIVAAR / ROYAL HOSTS & FAMILY BLESSINGS SECTION (Minimalist White Theme) -->
   <section id="hosts" class="py-20 px-4 sm:px-8 bg-white text-charcoal relative z-10 border-b border-[#E5E5EA] overflow-hidden">
     <!-- Corner Floral Decorations -->
-    <img src="assets/flower.png" alt="" class="absolute top-0 left-0 w-28 sm:w-40 md:w-48 opacity-90 pointer-events-none select-none z-0 transform scale-y-[-1]" />
-    <img src="assets/flower.png" alt="" class="absolute bottom-0 right-0 w-28 sm:w-40 md:w-48 opacity-90 pointer-events-none select-none z-0 transform scale-x-[-1]" />
+    <img src="assets/flower.webp" alt="Floral Corner" class="absolute top-0 left-0 w-24 sm:w-36 md:w-44 opacity-85 pointer-events-none select-none z-0 transform scale-y-[-1]" />
+    <img src="assets/flower.webp" alt="Floral Corner" class="absolute bottom-0 right-0 w-24 sm:w-36 md:w-44 opacity-85 pointer-events-none select-none z-0 transform scale-x-[-1]" />
 
     <div class="max-w-3xl mx-auto space-y-10 text-center relative z-10">
       
@@ -622,7 +767,11 @@
       <div class="space-y-2 scroll-reveal">
         <span data-trans="hostsSub" class="font-sans text-[10px] tracking-[0.3em] text-[#C5A059] font-bold block">WITH THE BLESSINGS OF OUR ELDERS</span>
         <h2 data-trans="hostsTitle" class="font-cursive text-5xl sm:text-6xl text-black font-medium tracking-wide">With Blessings</h2>
-        <div class="w-12 h-[1px] bg-royal-gold/45 mx-auto mt-2"></div>
+        <div class="flex items-center justify-center gap-3 pt-1">
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/50"></div>
+          <span class="text-[#C5A059] text-xs select-none">✦</span>
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/50"></div>
+        </div>
       </div>
 
       <!-- SPACIOUS & AIRY LUXURY CARD BOX (Authentic Royal Invitation Card Border) -->
@@ -659,6 +808,13 @@
 
       </div>
 
+      <!-- Elegant Horizontal Rose Garland Section Divider -->
+      <div class="pt-6 flex items-center justify-center gap-3 max-w-xl mx-auto scroll-reveal">
+        <div class="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-[#C5A059]/60"></div>
+        <img src="assets/divider-flower.png" alt="Floral Garland Divider" class="w-48 sm:w-60 h-auto object-contain select-none pointer-events-none filter drop-shadow-[0_4px_10px_rgba(197,160,89,0.15)]" loading="lazy" decoding="async" />
+        <div class="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#C5A059]/30 to-[#C5A059]/60"></div>
+      </div>
+
     </div>
   </section>
 
@@ -678,7 +834,12 @@
       <div class="space-y-3 scroll-reveal">
         <span class="font-sans text-[10px] uppercase tracking-[0.3em] text-[#C5A059] font-bold block">VENUE</span>
         <h2 data-trans="venueTitle" class="font-cursive text-5xl sm:text-6xl text-black font-medium tracking-wide">Where We Celebrate</h2>
-        <p class="font-serif italic text-base sm:text-lg text-charcoal-muted font-light pt-1">Prasang Lawn</p>
+        <div class="flex items-center justify-center gap-3 pt-1">
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]/50"></div>
+          <span class="text-[#C5A059] text-xs select-none">✦</span>
+          <div class="w-8 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]/50"></div>
+        </div>
+        <p class="font-serif italic text-base sm:text-lg text-charcoal-muted font-light pt-1">Accord Wildlife, Pench</p>
       </div>
 
       <!-- CLEAN GOLD EMBEDDED GOOGLE MAP CARD BOX (Rich Royal Invitation Border) -->
@@ -695,7 +856,7 @@
           
           <!-- Embedded Google Maps -->
           <iframe 
-            src="https://maps.google.com/maps?q=Prasang+Lawn&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+            src="https://maps.google.com/maps?q=Accord+Wildlife+Resort+Pench&t=&z=14&ie=UTF8&iwloc=&output=embed" 
             class="w-full h-full border-0 filter saturate-[0.92] contrast-[1.03]" 
             allowfullscreen="" 
             loading="lazy"
@@ -708,7 +869,7 @@
       <!-- GET DIRECTIONS CTA BUTTON -->
       <div class="pt-2 scroll-reveal">
         <a 
-          href="https://maps.google.com/?q=Prasang+Lawn" 
+          href="https://maps.google.com/?q=Accord+Wildlife+Resort+Pench" 
           target="_blank" 
           class="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#FFFDF9] to-[#FAF6ED] text-black font-sans text-[11px] uppercase tracking-[0.2em] font-bold rounded-full border-2 border-[#C5A059]/60 shadow-[0_6px_20px_rgba(197,160,89,0.15)] hover:bg-[#8A3E4E] hover:text-white hover:border-[#8A3E4E] hover:shadow-lg transition-all duration-300">
           <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
@@ -751,6 +912,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4.6"></script>
+  <script src="script.js?v=5.3"></script>
 </body>
 </html>
