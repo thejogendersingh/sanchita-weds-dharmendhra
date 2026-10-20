@@ -166,14 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
       // Clean Minimalist Editorial Text
       const cx = w / 2;
       const cy = h / 2;
-      const fontSize = Math.min(Math.max(w / 28, 11), 13);
+      const fontSize = Math.min(Math.max(w / 26, 12), 15);
       ctx.fillStyle = '#0D3B3E';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.font = `600 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+      ctx.font = `bold ${fontSize}px "Plus Jakarta Sans", sans-serif`;
       ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
       ctx.shadowBlur = 2;
-      ctx.fillText('✦   S C R A T C H   T O   R E V E A L   ✦', cx, cy);
+      ctx.fillText('✦   S C R A T C H   T O   R E V E A L   ✦', cx, cy - 9);
+      ctx.font = `italic 500 ${Math.max(fontSize - 2.5, 10.5)}px "Playfair Display", serif`;
+      ctx.fillStyle = '#C5A059';
+      ctx.fillText('The Auspicious Wedding Ticker', cx, cy + 11);
       ctx.shadowColor = 'transparent';
     }
 
@@ -277,9 +280,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 700);
     }
 
-    // Event Listeners for Touch & Mouse
+    // Expose globally & attach initialization listeners
+    window.resizeScratchCanvas = resizeScratchCanvas;
     window.addEventListener('resize', resizeScratchCanvas);
-    setTimeout(resizeScratchCanvas, 100);
+    window.addEventListener('scroll', () => {
+      if (scratchCanvas.width === 0 || scratchCanvas.height === 0) {
+        resizeScratchCanvas();
+      }
+    }, { once: true, passive: true });
+
+    setTimeout(resizeScratchCanvas, 150);
+    setTimeout(resizeScratchCanvas, 600);
+    setTimeout(resizeScratchCanvas, 1500);
     if (document.fonts) {
       document.fonts.ready.then(resizeScratchCanvas);
     }
@@ -431,8 +443,8 @@ document.addEventListener('DOMContentLoaded', () => {
         bgAudio.loop = true;
         bgAudio.volume = 1.0; // 100% Full Volume
 
-        // Try primary assets/wedding_tune.mp3 for 100% Netlify & Mobile compatibility
-        bgAudio.src = 'assets/wedding_tune.mp3';
+        // Try primary assets/wedding_tune.mp3 with cache-buster for immediate playback
+        bgAudio.src = 'assets/wedding_tune.mp3?v=2.0';
         
         bgAudio.onerror = () => {
           if (bgAudio) {
