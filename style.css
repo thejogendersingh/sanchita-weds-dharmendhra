@@ -24,7 +24,7 @@ html {
   height: 100vh !important;
   height: 100dvh !important;
   z-index: 1000 !important;
-  background-color: #73836B !important; /* Sage green background to seamlessly match envelope video */
+  background: #73836B url('assets/envelope-poster.jpg') no-repeat center center / cover !important;
   overflow: hidden !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -50,6 +50,7 @@ html {
   min-height: 100dvh !important;
   object-fit: cover !important;
   object-position: center !important;
+  background: url('assets/envelope-poster.jpg') no-repeat center center / cover;
 }
 
 .door-overlay.is-opened {

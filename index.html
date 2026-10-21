@@ -58,19 +58,31 @@
     }
   </script>
 
-  <!-- Preload Critical Above-The-Fold Hero Background -->
+  <!-- Preload Critical Above-The-Fold Assets & Poster -->
+  <link rel="preload" as="image" href="assets/envelope-poster.jpg" />
   <link rel="preload" as="video" href="assets/hero-bg.mp4" type="video/mp4" />
   <link rel="preload" as="image" href="assets/hero-bg(1).webp" type="image/webp" />
-  <link rel="stylesheet" href="style.css?v=5.0" />
+  <link rel="stylesheet" href="style.css?v=5.1" />
 </head>
 <body class="bg-ivory-100 text-charcoal font-sans antialiased overflow-x-hidden">
+
+  <!-- BACKGROUND WEDDING AUDIO ELEMENT -->
+  <audio id="wedding-audio" loop preload="auto">
+    <source src="assets/wedding_tune.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- FLOATING LUXURY MUSIC TOGGLE BUTTON -->
+  <button id="audio-toggle-btn" class="fixed top-4 right-4 z-[50] flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#C5A059]/60 shadow-[0_4px_16px_rgba(0,0,0,0.3)] text-white transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer" title="Toggle Music" aria-label="Toggle Wedding Music">
+    <i data-lucide="volume-2" class="w-3.5 h-3.5 text-[#C5A059]"></i>
+    <span id="audio-label" class="text-[9px] font-bold tracking-[0.18em] text-[#C5A059] uppercase">MUSIC</span>
+  </button>
 
   <!-- ENVELOPE ENTRANCE OVERLAY -->
   <div id="door-overlay" class="door-overlay flex flex-col items-center justify-center cursor-pointer overflow-hidden" onclick="openRoyalDoor()">
     <!-- Background Video Wrapper (Guaranteed Full Width Mobile Fit) -->
     <div class="absolute inset-0 z-0 pointer-events-none w-full h-full overflow-hidden flex items-center justify-center">
-      <video id="envelope-video" muted playsinline class="w-full h-full object-cover object-center min-w-full min-h-full">
-        <source src="assets/envolp-open.mp4?v=2" type="video/mp4" />
+      <video id="envelope-video" muted playsinline preload="auto" poster="assets/envelope-poster.jpg" class="w-full h-full object-cover object-center min-w-full min-h-full">
+        <source src="assets/envolp-open.mp4?v=3" type="video/mp4" />
       </video>
     </div>
 
@@ -887,6 +899,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=6.3"></script>
+  <script src="script.js?v=6.4"></script>
 </body>
 </html>

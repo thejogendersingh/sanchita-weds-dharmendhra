@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     videoStarted = true;
 
+    // Immediately start the wedding audio inside user touch/click gesture
+    startIndianRagaMusic();
+
     // Fade out the CTA text immediately
     if (overlayCta) {
       overlayCta.style.opacity = '0';
@@ -432,111 +435,32 @@ document.addEventListener('DOMContentLoaded', () => {
   let bgAudio = null;
   let audioCtx = null;
   let isPlaying = false;
-  const ragaNotes = [220.00, 246.94, 277.18, 311.13, 329.63, 369.99, 415.30, 440.00, 493.88, 554.37];
 
   function startIndianRagaMusic() {
     if (isPlaying) return;
 
     try {
       if (!bgAudio) {
-        bgAudio = new Audio();
-        bgAudio.loop = true;
+        bgAudio = document.getElementById('wedding-audio');
+        if (!bgAudio) {
+          bgAudio = new Audio('assets/wedding_tune.mp3');
+          bgAudio.loop = true;
+        }
         bgAudio.volume = 1.0; // 100% Full Volume
-
-        // Try primary assets/wedding_tune.mp3 with cache-buster for immediate playback
-        bgAudio.src = 'assets/wedding_tune.mp3?v=2.0';
-        
-        bgAudio.onerror = () => {
-          if (bgAudio) {
-            bgAudio.src = 'assets/wedding_tune.mp4';
-            bgAudio.play().then(() => {
-              isPlaying = true;
-              updateAudioButtonUI(true);
-            }).catch(startWebAudioFallback);
-          }
-        };
       }
 
-      bgAudio.play().then(() => {
+      const playPromise = bgAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          isPlaying = true;
+          updateAudioButtonUI(true);
+        }).catch(err => {
+          console.log('Audio play prevented by browser policy:', err);
+        });
+      } else {
         isPlaying = true;
         updateAudioButtonUI(true);
-      }).catch(() => {
-        if (bgAudio) {
-          bgAudio.src = 'assets/wedding_tune.mp4';
-          bgAudio.play().then(() => {
-            isPlaying = true;
-            updateAudioButtonUI(true);
-          }).catch(startWebAudioFallback);
-        }
-      });
-    } catch (e) {
-      startWebAudioFallback();
-    }
-  }
-
-  function startWebAudioFallback() {
-    try {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioContextClass();
-
-      const masterGain = audioCtx.createGain();
-      masterGain.gain.setValueAtTime(1.0, audioCtx.currentTime); // 100% Full Volume
-      masterGain.connect(audioCtx.destination);
-
-      // Tanpura Drone Harmonies
-      [110.00, 164.81, 220.00].forEach((freq) => {
-        const osc = audioCtx.createOscillator();
-        const droneGain = audioCtx.createGain();
-        const filter = audioCtx.createBiquadFilter();
-
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(450, audioCtx.currentTime);
-
-        droneGain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-
-        osc.connect(filter);
-        filter.connect(droneGain);
-        droneGain.connect(masterGain);
-        osc.start();
-      });
-
-      // Shehnai & Flute Melody Loop
-      function playNextNote() {
-        if (!audioCtx) return;
-
-        const osc = audioCtx.createOscillator();
-        const noteGain = audioCtx.createGain();
-        const filter = audioCtx.createBiquadFilter();
-
-        const isFlute = Math.random() > 0.45;
-        osc.type = isFlute ? 'sine' : 'triangle';
-        const freq = ragaNotes[Math.floor(Math.random() * ragaNotes.length)];
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(isFlute ? 1500 : 2600, audioCtx.currentTime);
-
-        const duration = isFlute ? 2.5 : 1.4;
-        noteGain.gain.setValueAtTime(0);
-        noteGain.gain.linearRampToValueAtTime(0.35, audioCtx.currentTime + 0.15);
-        noteGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-
-        osc.connect(filter);
-        filter.connect(noteGain);
-        noteGain.connect(masterGain);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration + 0.1);
-
-        setTimeout(playNextNote, isFlute ? 1200 : 800);
       }
-
-      playNextNote();
-      isPlaying = true;
-      updateAudioButtonUI(true);
     } catch (e) {
       console.log('Audio init error:', e);
     }
@@ -556,11 +480,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function stopAllAudio() {
     if (bgAudio) {
       bgAudio.pause();
-      bgAudio.currentTime = 0;
-    }
-    if (audioCtx) {
-      audioCtx.close();
-      audioCtx = null;
     }
     isPlaying = false;
     updateAudioButtonUI(false);
@@ -568,7 +487,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const audioToggleBtn = document.getElementById('audio-toggle-btn');
   if (audioToggleBtn) {
-    audioToggleBtn.addEventListener('click', () => {
+    audioToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       if (isPlaying) {
         stopAllAudio();
       } else {
@@ -576,6 +496,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Mobile touch/click fallback unlocker
+  function tryUnlockAudio() {
+    if (!isPlaying) {
+      startIndianRagaMusic();
+    }
+  }
+  document.addEventListener('touchstart', tryUnlockAudio, { once: true, passive: true });
+  document.addEventListener('click', tryUnlockAudio, { once: true });
 
   // 6. RSVP FORM SUBMIT WITH CONFETTI
   const rsvpForm = document.getElementById('rsvp-form');
